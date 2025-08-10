@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
+/* Default theme variables */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 245, 245, 247;
+  --primary: 73, 175, 83;
+  --secondary: 102, 102, 102;
+  --light-gray: 239, 248, 242;
+  --dark-gray: 24, 28, 20;
+
+  --button-primary: 255, 255, 255;
+
+  --oragne: 255, 165, 0;
+}
+body {
+  background-color: rgb((var(--background)));
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.container {
+  max-width: 1300px;
+  width: 90%;
+  margin: 4rem auto;
+}
+.footer {
+  max-width: 1300px;
+  width: 90%;
+  margin: 0em auto;
+}
+
+.slick-slide {
+  padding: 0 10px;
+}
+/* Make dots larger and green */
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #10b981; /* Tailwind emerald-500 */
+  opacity: 0.6;
+}
+
+/* Active dot */
+.slick-dots li.slick-active button:before {
+  color: #059669; /* Tailwind emerald-600 */
+  opacity: 1;
+}
+
+@layer base {
+  h1 {
+    /* font-size: clamp(1.5rem, 2vw + 1rem, 3rem); */
+  }
+
+  p {
+    font-size: clamp(0.8rem, 1.5vw + 1rem, 1rem);
+    max-width: 800px;
+    line-height: 1.8rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.map-wrapper .leaflet-container {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.map-wrapper:hover .leaflet-container {
+  filter: grayscale(0%);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --background: 255, 255, 255;
+  --primary: 49, 175, 53;
+  --secondary: 102, 102, 102;
+  --light-gray: 239, 240, 239;
+  --dark-gray: 102, 102, 102;
+  --black-gay: 23, 23, 23;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --background: 0, 0, 0;
+  --primary: 0, 200, 100;
+  --secondary: 180, 180, 180;
+  --black-gay: 24, 28, 20;
+}
+@theme {
+  --color-primary: rgb(var(--primary));
+  --color-secondary: rgb(var(--secondary));
+  --color-background: rgb(var(--background));
+  --color-light-gray: rgb(var(--light-gray));
+  --color-dark-gray: rgb(var(--dark-gray));
+  --color-button-primary: rgb(var(--button-primary));
+  --color-avocado-100: rgb(var(--oragne));
 }

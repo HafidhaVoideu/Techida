@@ -1,0 +1,90 @@
+import React from "react";
+import TitleDescription from "@/components/UI/TitleDescription";
+import { TPricingCard, TpricingOptions } from "@/lib/types";
+import Button from "@/components/UI/Button";
+import { pricingData } from "@/lib/contants";
+
+import { CircleCheck } from "lucide-react";
+import { CircleX } from "lucide-react";
+
+const Pricing = () => {
+  return (
+    <section className="container mt-12">
+      <TitleDescription
+        subtitle="pricing "
+        title="our pricing"
+        des=" As a matter of fact the unification of the coherent software provides a strict control over The Accomplishment of Intended Estimation
+free
+00$
+per project
+
+    single user
+    no updates
+    limited acces library
+    lorem ipsum
+    dolor sit amet
+
+"
+      ></TitleDescription>
+
+      <div className="flex flex-col lg:flex-row gap-6 justify-between items-center ">
+        {pricingData.map((p) => (
+          <PricingCard key={p.id} {...p}></PricingCard>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Pricing;
+
+const PricingCard = ({
+  options,
+  offerType,
+  price,
+  trial,
+  icon: Icon,
+}: TPricingCard) => {
+  return (
+    <article className=" group border-2 border-primary/20    flex flex-col gap-8 items-start   shadow-sm p-8 rounded-2xl min-h-[550px] hover:bg-primary  flex-1 transition-all duration-300 hover:scale-105">
+      {/* <Icon className="text-dark-gray" size={48}></Icon> */}
+
+      <div className="">
+        <h2 className="text-primary text-2xl font-bold capitalize mb-3 group-hover:text-white">
+          {offerType}
+        </h2>
+
+        <div className=" flex item-center justify-center gap-1 ">
+          <p className="text-primary text-3xl font-bold group-hover:text-white">
+            {" "}
+            ${price}
+          </p>
+
+          <span className="text-gray-300 font-semibold text-lg"> | Month </span>
+        </div>
+      </div>
+
+      <button className="bg-primary px-5 py-3 w-full text-white rounded-3xl font-semibold group-hover:bg-white group-hover:text-primary">
+        {trial}
+      </button>
+
+      <div className="w-full h-[1px] bg-gray-100  "></div>
+
+      <ul className=" text-md group-hover:text-white">
+        {options.map((o) => (
+          <div key={o.id} className=" mb-4 flex items-center gap-3 flex-wrap ">
+            <div className="">
+              {o.isAvailable ? (
+                <CircleCheck size={22}></CircleCheck>
+              ) : (
+                <CircleX size={22}></CircleX>
+              )}
+            </div>
+
+            <li className="flex-1/2"> {o.option}</li>
+          </div>
+        ))}
+      </ul>
+    </article>
+  );
+};
