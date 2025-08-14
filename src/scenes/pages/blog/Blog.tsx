@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "@/components/UI/Banner";
 import TitleDescription from "@/components/UI/TitleDescription";
 import FAQ from "@/components/UI/FAQ";
@@ -8,18 +8,34 @@ import Link from "next/link";
 import { Tag } from "lucide-react";
 import { Calendar } from "lucide-react";
 
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import Image from "next/image";
-import page from "./../../../app/signup/page";
+
+import { staggerContainerVariants, staggerItemVariants } from "@/lib/variants";
+
+import { motion } from "motion/react";
+import SkeletonCard from "@/components/UI/SkeletonCard";
 
 const Blog = () => {
+  const [loading, setLoading] = useState(true);
+  const blogItems = 9;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section>
       <Banner
         path="Home / Blog"
-        title="our blog"
-        description="Although, final stages of the internal network gives a complete experience of The Parameter of Speculative Environment"
-      ></Banner>
-
+        title="Our Blog"
+        description="Stay updated with the latest insights, tips, and trends in technology, business, and innovation."
+      />
       <section className="container">
         <TitleDescription
           subtitle="blog"
@@ -28,19 +44,32 @@ const Blog = () => {
         ></TitleDescription>
         {/* blogs */}
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-8">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => (
-            <BlogItem key={x}></BlogItem>
-          ))}
-        </div>
+        <motion.div
+          variants={staggerContainerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))]  lg:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-content-center place-items-center gap-8"
+        >
+          {loading
+            ? Array(blogItems)
+                .fill(0)
+                .map((x, i) => (
+                  <SkeletonCard key={`skeleton-${i}`}></SkeletonCard>
+                ))
+            : Array(blogItems)
+                .fill(0)
+                .map((x, i) => (
+                  <BlogItem id={i} key={`blogItem-${i}`}></BlogItem>
+                ))}
+        </motion.div>
 
         {/* pagination */}
 
-        <div className="flex gap-2 items-center justify-center mt-12">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => (
+        {/* <div className="flex gap-2 items-center justify-center mt-12">
+          {[1, 2, 3, 4].map((x) => (
             <PaginationItem key={x} page={x}></PaginationItem>
           ))}
-        </div>
+        </div> */}
       </section>
 
       <FAQ></FAQ>
@@ -50,13 +79,16 @@ const Blog = () => {
 
 export default Blog;
 
-const BlogItem = () => {
+const BlogItem = ({ id = 1 }) => {
   return (
-    <article className="bg-light-gray rounded-xl shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+    <motion.article
+      variants={staggerItemVariants}
+      className="bg-light-gray rounded-xl shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl max-w-[400px]"
+    >
       {/* Image */}
       <div className="relative w-full h-64 md:h-80 overflow-hidden">
         <Image
-          src="/assets/portfolio/port4.jpg"
+          src="/assets/blogItem.jpg"
           alt="How to learn JavaScript easily"
           fill
           className="object-cover transition-transform duration-500 hover:scale-105"
@@ -83,14 +115,14 @@ const BlogItem = () => {
           How to Learn JavaScript Easily With This Method
         </h2>
 
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-3">
+        <p className="text-dark-gray text-sm md:text-base leading-relaxed line-clamp-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
           earum id assumenda ad neque recusandae, quasi deleniti voluptatum eos
           vel quas molestias?
         </p>
 
         <Link
-          href="/blog/1"
+          href={`blog/${id}`}
           aria-label="Read more about learning JavaScript"
           className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300"
         >
@@ -98,7 +130,7 @@ const BlogItem = () => {
           <MoveRight size={22} />
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 };
 

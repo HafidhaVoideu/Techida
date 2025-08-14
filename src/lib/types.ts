@@ -1,5 +1,6 @@
 import { type LucideIcon } from "lucide-react";
 import Title from "./../components/UI/Title";
+import { Variant, Variants } from "framer-motion";
 
 export type TServiceItem = {
   id: number;
@@ -8,15 +9,26 @@ export type TServiceItem = {
   description: string;
   link: string;
 };
+export type TMenuItem = {
+  id: number;
+  label: string;
+  href: string;
+};
 
-export type ToggleButtonProps = {
-  toggle: boolean;
-  setToggle: (toggle: boolean) => void;
+export type TMenuLinksProps = {
+  variants: any;
+  items: TMenuItem[];
+  activeLink: string;
+  setIsMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  className?: string;
+  isMobile?: boolean;
+  setActiveLink: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type TExperienceItem = {
   id: number;
   title: string;
+  variants: Variants;
   icon: LucideIcon;
 };
 
@@ -30,6 +42,7 @@ export type TypeTitleDescription = {
   title: string;
   subtitle?: string;
   des?: string;
+  className?: string;
   isTheLastWordHighlighted?: Boolean;
 };
 
@@ -100,6 +113,8 @@ export type Tinputprops = {
   inputType?: string;
   rows?: number;
   placeholder: string;
+  label?: string;
+  customClass?: string;
 };
 
 export type TtestimonialsProps = {
@@ -116,4 +131,45 @@ export type TportfolioProps = {
   projectName: string;
   projectType: string;
   technologies: string[];
+};
+
+export type tBlogItemProps = {
+  icon: LucideIcon;
+  id?: number;
+  info: string | number;
+};
+
+export type TRecentPostProps = {
+  id: number;
+  title: string;
+  image: string;
+  date: string;
+};
+export type TCateogoriesProps = {
+  id: number;
+  title: string;
+  count: number;
+};
+
+export type TCommentItemProps = {
+  id: number;
+  name: string;
+  image: string;
+  comment: string;
+  date: string;
+
+  replies?: TCommentItemProps[];
+  customClass?: string;
+};
+
+export type TBrandItemProps = {
+  id: number;
+  brand: string;
+  logo: string;
+};
+
+export type BrandItemProps = {
+  brands: TBrandItemProps[];
+  from?: number | string;
+  to?: number | string;
 };

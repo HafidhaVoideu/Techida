@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import TitleDescription from "@/components/UI/TitleDescription";
 import { TPricingCard, TpricingOptions } from "@/lib/types";
@@ -6,6 +7,9 @@ import { pricingData } from "@/lib/contants";
 
 import { CircleCheck } from "lucide-react";
 import { CircleX } from "lucide-react";
+
+import { motion } from "motion/react";
+import { staggerContainerVariants, staggerItemVariants } from "@/lib/variants";
 
 const Pricing = () => {
   return (
@@ -27,11 +31,17 @@ per project
 "
       ></TitleDescription>
 
-      <div className="flex flex-col lg:flex-row gap-6 justify-between items-center ">
+      <motion.div
+        variants={staggerContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8  justify-between  "
+      >
         {pricingData.map((p) => (
           <PricingCard key={p.id} {...p}></PricingCard>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
@@ -46,16 +56,19 @@ const PricingCard = ({
   icon: Icon,
 }: TPricingCard) => {
   return (
-    <article className=" group border-2 border-primary/20    flex flex-col gap-8 items-start   shadow-sm p-8 rounded-2xl min-h-[550px] hover:bg-primary  flex-1 transition-all duration-300 hover:scale-105">
+    <motion.article
+      variants={staggerItemVariants}
+      className=" group border-2 border-primary/40    flex flex-col gap-8 items-start   shadow-sm p-8 rounded-2xl  hover:bg-primary  flex-1 transition-all duration-300 hover:scale-105"
+    >
       {/* <Icon className="text-dark-gray" size={48}></Icon> */}
 
       <div className="">
-        <h2 className="text-primary text-2xl font-bold capitalize mb-3 group-hover:text-white">
+        <h2 className="text-primary text-2xl font-bold capitalize mb-3 group-hover:text-light-gray">
           {offerType}
         </h2>
 
         <div className=" flex item-center justify-center gap-1 ">
-          <p className="text-primary text-3xl font-bold group-hover:text-white">
+          <p className="text-primary text-3xl font-bold group-hover:text-light-gray">
             {" "}
             ${price}
           </p>
@@ -81,10 +94,10 @@ const PricingCard = ({
               )}
             </div>
 
-            <li className="flex-1/2"> {o.option}</li>
+            <li className="flex-1/2 text-md text-dark-gray"> {o.option}</li>
           </div>
         ))}
       </ul>
-    </article>
+    </motion.article>
   );
 };

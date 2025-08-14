@@ -3,18 +3,56 @@
 /* Default theme variables */
 
 :root {
-  --background: 245, 245, 247;
+  --background: 245, 245, 245;
   --primary: 73, 175, 83;
   --secondary: 102, 102, 102;
-  --light-gray: 239, 248, 242;
+  --light-gray: 243, 244, 246;
   --dark-gray: 24, 28, 20;
-
   --button-primary: 255, 255, 255;
+  --stable-gray: 24, 28, 20;
+  --brands-gray: 243, 244, 246;
+}
 
-  --oragne: 255, 165, 0;
+/* Light theme */
+[data-theme="light"] {
+  --background: 245, 245, 245;
+  --primary: 49, 175, 70;
+  --secondary: 102, 102, 102;
+  --light-gray: 239, 240, 239;
+  --dark-gray: 24, 28, 20;
+  --black-gay: 23, 23, 23;
+  --stable-gray: 24, 28, 20;
+  --brands-gray: 239, 240, 239;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --background: 0, 0, 0;
+  --primary: 73, 175, 83;
+  --secondary: 180, 180, 180;
+  --light-gray: 33, 33, 33;
+  --dark-gray: 245, 245, 245;
+  --stable-gray: 33, 33, 33;
+  --brands-gray: 51, 51, 53;
+}
+@theme {
+  --color-primary: rgb(var(--primary));
+  --color-secondary: rgb(var(--secondary));
+  --color-background: rgb(var(--background));
+  --color-light-gray: rgb(var(--light-gray));
+  --color-dark-gray: rgb(var(--dark-gray));
+  --color-button-primary: rgb(var(--button-primary));
+  --color-avocado-100: rgb(var(--oragne));
+  --color-stable-gray: rgb(var(--stable-gray));
+  --color-brands-gray: rgb(var(--brands-gray));
+}
+
+/* globals.css */
+html {
+  @apply transition-colors duration-800;
 }
 body {
-  background-color: rgb((var(--background)));
+  background-color: rgb(var(--background));
 }
 
 img {
@@ -24,11 +62,17 @@ img {
   object-fit: cover;
 }
 
+.container-banner,
 .container {
   max-width: 1300px;
+  margin: 0 auto;
   width: 90%;
-  margin: 4rem auto;
 }
+
+.container {
+  margin: 3rem auto 8rem;
+}
+
 .footer {
   max-width: 1300px;
   width: 90%;
@@ -51,14 +95,31 @@ img {
   opacity: 1;
 }
 
-@layer base {
-  h1 {
-    /* font-size: clamp(1.5rem, 2vw + 1rem, 3rem); */
-  }
+.group-hover\:text-white {
+  transition: color 0.3s ease;
+}
 
+.service-icon {
+  height: 45px;
+  width: 45px;
+}
+.normal-icon {
+  height: 20px;
+  width: 20px;
+}
+.contact-icon {
+  height: 30px;
+  width: 30px;
+}
+
+@layer base {
+  h1,
+  h2 {
+    line-height: 8rem;
+  }
   p {
-    font-size: clamp(0.8rem, 1.5vw + 1rem, 1rem);
-    max-width: 800px;
+    font-size: clamp(0.95rem, 1.9vw + 1rem, 1rem);
+    max-width: 80ch;
     line-height: 1.8rem;
   }
 }
@@ -72,29 +133,25 @@ img {
   filter: grayscale(0%);
 }
 
-/* Light theme */
-[data-theme="light"] {
-  --background: 255, 255, 255;
-  --primary: 49, 175, 53;
-  --secondary: 102, 102, 102;
-  --light-gray: 239, 240, 239;
-  --dark-gray: 102, 102, 102;
-  --black-gay: 23, 23, 23;
+@media screen and (min-width: 1640px) {
+  .container,
+  .container-banner {
+    max-width: 1500px;
+  }
 }
 
-/* Dark theme */
-[data-theme="dark"] {
-  --background: 0, 0, 0;
-  --primary: 0, 200, 100;
-  --secondary: 180, 180, 180;
-  --black-gay: 24, 28, 20;
-}
-@theme {
-  --color-primary: rgb(var(--primary));
-  --color-secondary: rgb(var(--secondary));
-  --color-background: rgb(var(--background));
-  --color-light-gray: rgb(var(--light-gray));
-  --color-dark-gray: rgb(var(--dark-gray));
-  --color-button-primary: rgb(var(--button-primary));
-  --color-avocado-100: rgb(var(--oragne));
+@media screen and (min-width: 1024px) {
+  .service-icon {
+    height: 65px;
+    width: 65px;
+  }
+
+  .normal-icon {
+    height: 30px;
+    width: 30px;
+  }
+  .contact-icon {
+    height: 40px;
+    width: 40px;
+  }
 }

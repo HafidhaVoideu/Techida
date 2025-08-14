@@ -10,8 +10,8 @@ import {
 
 const Statistics = () => {
   return (
-    <div className="bg-dark-gray ">
-      <div className="flex gap-2 items-center justify-between container py-12 flex-wrap">
+    <div className="bg-stable-gray">
+      <div className="flex flex-col md:flex-row gap-6  items-center justify-between container py-12 ">
         {statsData.map((x) => (
           <StatisticsItem key={x.id} {...x}></StatisticsItem>
         ))}
@@ -57,10 +57,13 @@ const StatisticsItem = ({ from = 0, title = "", stat: to = 90 }) => {
 
   return (
     <div className="capitalize text-center">
-      <h2 ref={ref} className="text-5xl text-primary font-bold mb-4">
+      <h2
+        ref={ref}
+        className=" text-3xl md:text-5xl text-primary font-bold mb-4"
+      >
         {to}
       </h2>
-      <h1 className="text-2xl font-bold text-white">{title}</h1>
+      <h1 className=" text-xl lg:text-2xl font-bold text-white">{title}</h1>
     </div>
   );
 };

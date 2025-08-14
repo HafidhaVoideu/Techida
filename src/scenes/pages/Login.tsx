@@ -4,11 +4,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { withFormik, FormikProps, FormikErrors, Form } from "formik";
+import { withFormik, FormikProps, FormikErrors } from "formik";
 import * as Yup from "yup";
 
 import Input from "@/components/UI/Input";
 import Button from "@/components/UI/Button";
+
+import Form from "@/components/UI/Form";
+
+import { motion } from "motion/react";
+import { slideFromLeft, slideFromRight } from "@/lib/variants";
 
 interface FormValues {
   email: string;
@@ -20,17 +25,30 @@ const Login = () => {
     const { isSubmitting } = props;
 
     return (
-      <Form className="flex flex-col gap-4 max-w-[500px]">
+      <Form>
         {/* email*/}
 
-        <Input type="email" name="email" placeholder="email"></Input>
+        <Input
+          type="email"
+          name="email"
+          placeholder="email"
+          customClass="col-span-2"
+        ></Input>
         {/* password */}
 
-        <Input type="password" name="password" placeholder="name"></Input>
+        <Input
+          type="password"
+          name="password"
+          placeholder="name"
+          customClass="col-span-2"
+        ></Input>
 
-        <div className="self-center mt-4">
-          <Button text="Submit" type="submit" disabled={isSubmitting}></Button>
-        </div>
+        <Button
+          text="Submit"
+          type="submit"
+          disabled={isSubmitting}
+          customClass="col-span-2 mt-8"
+        ></Button>
       </Form>
     );
   };
@@ -75,17 +93,26 @@ const Login = () => {
   })(InnerForm);
   return (
     <section className="container">
-      <div className="flex flex-col md:flex-row justify-between gap-12">
-        <Image
-          src="/assets/login.svg"
-          alt="login-image"
-          width={500}
-          height={500}
+      <div className="flex flex-col md:flex-row justify-between gap-24 ">
+        <motion.div
+          variants={slideFromLeft}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.2 }}
           className="flex-1/2 order-2 md:order-1"
-        ></Image>
+        >
+          <Image
+            src="/assets/login.svg"
+            alt="login-image"
+            width={500}
+            height={500}
+            priority
+            className="h-full w-full"
+          ></Image>
+        </motion.div>
 
-        <div className="capitalize  flex-1/2 order-1 md:order-2  text-dark-gray ">
-          <h1 className="text-5xl font-bold">login</h1>
+        <div className="capitalize  flex-1/2 order-1 md:order-2  text-dark-gray  ">
+          <h1 className=" text-4xl md:text-5xl font-bold">login</h1>
 
           <p className="my-4 text-md">
             you dont have an account ?
@@ -97,7 +124,7 @@ const Login = () => {
 
           <MyForm></MyForm>
 
-          <p className="mt-4 text-md">
+          <p className="mt-8 text-md">
             forgot password?
             <Link href="/" className="text-primary font-[600]">
               {" "}

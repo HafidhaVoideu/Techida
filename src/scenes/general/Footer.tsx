@@ -10,9 +10,9 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark-gray ">
+    <footer className="bg-stable-gray ">
       <div className="footer py-8 px-2">
-        <div className="  grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-8  place-items-center">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-8  place-items-center">
           {/* logo */}
           <div className="text-white capitalize">
             <Image
@@ -67,7 +67,7 @@ const ListItem = ({ id, elements, list }: TFooterList) => {
       {elements.map((e) => (
         <li
           key={e.id}
-          className="ml-2 mb-4 min-w-[180px] hover:text-primary cursor-pointer hover:scale-105 hover:font-semibold "
+          className="ml-2 mb-4 min-w-[180px] hover:text-primary cursor-pointer transition-all duration-300 ease-in-out "
         >
           {" "}
           <Link href="#">{e.label}</Link>

@@ -3,7 +3,7 @@ import React from "react";
 
 const loading = () => {
   return (
-    <div className="min-h-screen fixed">
+    <div className="min-h-screen ">
       {/* Your page content would go here */}
       <div className="fixed inset-0 bg-gray-100/50 backdrop-blur-sm flex items-center justify-center z-50">
         {/* Spinner */}

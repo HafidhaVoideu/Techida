@@ -1,116 +1,193 @@
 "use client";
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { menu_items } from "@/lib/contants";
-
 import Image from "next/image";
-
-import { MenuIcon } from "lucide-react";
-
 import Link from "next/link";
 import Button from "@/components/UI/Button";
-
-import { Sun } from "lucide-react";
-import { Moon } from "lucide-react";
-
+import { Sun, Moon, MenuIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { menuVariants, staggerMenuVariants } from "@/lib/variants";
-const Header = () => {
-  const [toggle, setToggle] = useState(false);
-  const [togggleMenu, setToggleMenu] = useState(false);
-  const [activeLink, setActiveLink] = useState("home");
+import { useTheme } from "next-themes";
+import {
+  menuVariants,
+  staggerMenuVariants,
+  mobileMenuContainer,
+  mobileMenuItem,
+} from "@/lib/variants";
+import { TMenuLinksProps } from "@/lib/types";
+
+import dynamic from "next/dynamic";
+// ** TOGGLE BUTTON
+
+const ToggleButton = dynamic(
+  () => import("./ToggleButton").then((mod) => mod.ToggleButton),
+  { ssr: false }
+);
+// const ToggleButton = ({}) => {
+//   const { theme, setTheme, systemTheme } = useTheme();
+
+//   const currentTheme = theme === "system" ? systemTheme : theme;
+//   return (
+//     <button
+//       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
+//       className="p-2 border-dark-gray border rounded-full"
+//     >
+//       {currentTheme == "dark" ? (
+//         <Sun size={24} className="text-dark-gray" />
+//       ) : (
+//         <Moon size={24} className="text-dark-gray" />
+//       )}
+//     </button>
+//   );
+// };
+
+// ** MENU LINKS
+
+const MenuLinks = ({
+  items,
+  activeLink,
+  setActiveLink,
+  setIsMenuOpen,
+  variants,
+  className = "",
+  isMobile = false,
+}: TMenuLinksProps) => {
+  const newItems = !isMobile ? items.slice(0, -1) : items;
 
   return (
-    <header className="shadow-md z-50 sticky top-0 left-0 right-0 bg-background  ">
-      <div className="relative flex items-center justify-between py-5 px-4 max-w-[1300px] mx-auto">
-        {/* menu dev */}
+    <motion.ul
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      className={` font-bold flex gap-4 ${className}`}
+    >
+      {newItems.map((item) => (
+        <motion.li
+          key={item.id}
+          variants={staggerMenuVariants} // each item animates separately
+          onClick={() => {
+            if (setIsMenuOpen) setIsMenuOpen(false);
+            setActiveLink(item.label);
+          }}
+        >
+          <Link
+            className={`px-4 py-2 rounded-md transition-colors font-semibold duration-200  text-sm xl:text-md ${
+              activeLink === item.label
+                ? "bg-primary  text-white "
+                : "text-dark-gray "
+            }`}
+            href={item.href}
+          >
+            {item.label}
+          </Link>
+        </motion.li>
+      ))}
+    </motion.ul>
+  );
+};
 
-        <AnimatePresence>
-          {togggleMenu && (
-            <motion.div
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="bg-background  md:hidden  absolute  top-21 left-0 w-full  shadow-lg z-20"
-            >
-              <motion.ul
-                variants={menuVariants}
-                className="text-dark-gray  font-bold  text-sm lg:text-lg flex flex-col items-center gap-y-4 py-4"
-              >
-                {menu_items.map((item) => (
-                  <motion.li
-                    onClick={() => setActiveLink(item.label)}
-                    variants={staggerMenuVariants}
-                    key={item.id}
-                  >
-                    <Link href={item.href}>{item.label}</Link>
-                  </motion.li>
-                ))}
-              </motion.ul>
+// ** MOBILE MENU
 
-              <div className=" flex flex-col items-center gap-2">
-                <Link href="/login">
-                  <Button text="join now"></Button>
-                </Link>
-                <ToggleButton toggle={toggle} setToggle={setToggle} />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+const MobileMenu = ({
+  isMenuOpen,
+  setIsMenuOpen,
+  menu_items,
+  activeLink,
+  setActiveLink,
+}: any) => (
+  <AnimatePresence mode="popLayout">
+    {isMenuOpen && (
+      <motion.div
+        variants={mobileMenuContainer}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        layout
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="bg-gradient-to-b from-background via-background/90 to-background/80 lg:hidden absolute top-16 left-0 w-full shadow-lg z-20 py-6"
+      >
+        <MenuLinks
+          items={menu_items}
+          activeLink={activeLink}
+          setActiveLink={setActiveLink}
+          setIsMenuOpen={setIsMenuOpen}
+          variants={mobileMenuItem}
+          isMobile
+          className="flex-col items-center"
+        />
+        <div className="flex flex-col items-center gap-4 mt-4">
+          <ToggleButton />
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
 
-        {/* DESKTOP  */}
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("home");
+  const { theme } = useTheme();
+  const [scrollPoistion, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollPosition(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`${
+        scrollPoistion > 100
+          ? theme == "dark"
+            ? " bg-gradient-to-b from-background via-background/90 to-background/80  "
+            : "shadow-md bg-white/60 backdrop-blur-md "
+          : ""
+      }z-50 sticky top-0 `}
+    >
+      <div className="flex items-center justify-between py-5  container-banner ">
+        <MobileMenu
+          isMenuOpen={isMenuOpen}
+          menu_items={menu_items}
+          activeLink={activeLink}
+          setActiveLink={setActiveLink}
+          setIsMenuOpen={setIsMenuOpen}
+        />
 
         <Image
           src="/logo.png"
           alt="Logo"
           width={120}
           height={120}
-          className="width-[90px] height-[9px] md:width-[140px] height-[140px]  "
+          className="
+        h-auto w-[90px] md:w-[105px]
+       lg:w-[120px]"
         />
 
-        <nav>
-          {/* menu */}
-          <ul className=" hidden md:flex gap-x-1   ">
-            {menu_items.map((item) => (
-              <li
-                key={item.id}
-                className="text-dark-gray font-[700]  text-sm  xl:text-md "
-              >
-                <Link
-                  className={`px-4 py-2 rounded-md transition-colors duration-200
-          ${
-            activeLink === item.label
-              ? "bg-primary text-white"
-              : "text-gray-700 hover:bg-gray-100"
-          }
-        focus:outline-none focus:ring-2 focus:ring-primary`}
-                  href={item.href}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/*  buttons*/}
+        <nav className="hidden lg:flex gap-x-1">
+          <MenuLinks
+            items={menu_items}
+            variants={menuVariants}
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}
+          />
         </nav>
+
         <div className="flex items-center gap-x-4">
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Link href="/login">
-              <Button text="Join now"></Button>
+              <Button text="Join now" />
             </Link>
           </div>
-
           <div className="hidden lg:block">
-            <ToggleButton toggle={toggle} setToggle={setToggle} />
+            <ToggleButton />
           </div>
 
           <MenuIcon
-            onClick={() => setToggleMenu(!togggleMenu)}
-            className="block md:hidden"
-            size={28}
-          ></MenuIcon>
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="block lg:hidden cursor-pointer"
+            size={26}
+          />
         </div>
       </div>
     </header>
@@ -118,24 +195,3 @@ const Header = () => {
 };
 
 export default Header;
-
-const ToggleButton = ({
-  toggle,
-  setToggle,
-}: {
-  toggle: boolean;
-  setToggle: (toggle: boolean) => void;
-}) => {
-  return (
-    <button
-      onClick={() => setToggle(!toggle)}
-      className="p-2 border-green-600 border-1 rounded-full md"
-    >
-      {toggle ? (
-        <Sun size={24} className="text-dark-gray" />
-      ) : (
-        <Moon size={24} className="text-dark-gray" />
-      )}
-    </button>
-  );
-};

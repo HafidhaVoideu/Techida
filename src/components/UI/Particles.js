@@ -86,7 +86,7 @@ const ParticlesComponent = (props) => {
           value: 1.0,
         },
         shape: {
-          type: "square",
+          type: "circle",
         },
         size: {
           value: { min: 1, max: 3 },
@@ -97,7 +97,14 @@ const ParticlesComponent = (props) => {
     []
   );
 
-  return <Particles id={props.id} init={particlesLoaded} options={options} />;
+  return (
+    <div
+      className="particles-container"
+      style={{ position: "relative", height: "100%", width: "100%" }}
+    >
+      <Particles id={props.id} init={particlesLoaded} options={options} />
+    </div>
+  );
 };
 
 export default ParticlesComponent;

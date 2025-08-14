@@ -10,12 +10,15 @@ import Team from "./Team";
 import { ContactWithoutBanner } from "../Contact";
 import Testimonials from "./Testimonials";
 import Portfolio from "./Portfolio";
+import Brands from "./Brands";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero></Hero>
       <ServicesList></ServicesList>
+
+      <Brands></Brands>
       <AboutWithoutFaq></AboutWithoutFaq>
       <Choose></Choose>
       <Statistics></Statistics>
@@ -25,7 +28,7 @@ const Home = () => {
       <ContactWithoutBanner></ContactWithoutBanner>
 
       <FAQ></FAQ>
-    </div>
+    </>
   );
 };
 

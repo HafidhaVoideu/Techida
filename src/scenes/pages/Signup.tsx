@@ -4,11 +4,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { withFormik, FormikProps, FormikErrors, Form } from "formik";
+import { withFormik, FormikProps } from "formik";
 import * as Yup from "yup";
 
 import Input from "@/components/UI/Input";
 import Button from "@/components/UI/Button";
+
+import { motion } from "motion/react";
+import { slideFromLeft } from "@/lib/variants";
+
+import Form from "@/components/UI/Form";
 
 interface FormValues {
   email: string;
@@ -22,25 +27,45 @@ const Signup = () => {
     const { touched, errors, isSubmitting } = props;
 
     return (
-      <Form className="flex flex-col gap-4 max-w-[500px]">
+      <Form>
         {/* username*/}
 
-        <Input type="username" name="username" placeholder="username"></Input>
+        <Input
+          type="input"
+          name="username"
+          placeholder="username"
+          customClass="col-span-2"
+        ></Input>
         {/* email*/}
 
-        <Input type="email" name="email" placeholder="email"></Input>
+        <Input
+          type="input"
+          name="email"
+          placeholder="email"
+          customClass="col-span-2"
+        ></Input>
         {/* password */}
 
-        <Input type="password" name="password" placeholder="name"></Input>
         <Input
-          type="confirmPassword"
-          name="confirmPassword"
+          type="password"
+          name="password"
           placeholder="name"
+          customClass="col-span-2"
+        ></Input>
+        <Input
+          type="input"
+          name="confirmPassword"
+          label="confirm password"
+          placeholder="name"
+          customClass="col-span-2"
         ></Input>
 
-        <div className="self-center mt-4">
-          <Button text="Submit" type="submit" disabled={isSubmitting}></Button>
-        </div>
+        <Button
+          text="Submit"
+          type="submit"
+          disabled={isSubmitting}
+          customClass="col-span-2 mt-8"
+        ></Button>
       </Form>
     );
   };
@@ -98,17 +123,26 @@ const Signup = () => {
   })(InnerForm);
   return (
     <section className="container">
-      <div className="flex flex-col md:flex-row justify-between gap-12">
-        <Image
-          src="/assets/signup.svg"
-          alt="login-image"
-          width={500}
-          height={500}
+      <div className="flex flex-col md:flex-row justify-between gap-24">
+        <motion.div
+          variants={slideFromLeft}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.2 }}
           className="flex-1/2 order-2 md:order-1"
-        ></Image>
+        >
+          <Image
+            src="/assets/signup.svg"
+            alt="login-image"
+            width={500}
+            height={500}
+            className="h-full w-full"
+            priority
+          ></Image>
+        </motion.div>
 
         <div className="capitalize  flex-1/2 order-1 md:order-2  text-dark-gray ">
-          <h1 className="text-5xl font-bold">sign up</h1>
+          <h1 className=" text-4xl md:text-5xl  font-bold">sign up</h1>
 
           <p className="my-4 text-md">
             have an account already?

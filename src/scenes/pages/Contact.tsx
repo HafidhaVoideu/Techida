@@ -1,13 +1,12 @@
 "use client";
 import Banner from "@/components/UI/Banner";
 import TitleDescription from "@/components/UI/TitleDescription";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
-
 import * as Yup from "yup";
-
-import { withFormik, FormikProps, FormikErrors, Form } from "formik";
+import L from "leaflet";
+import { withFormik, FormikProps, FormikErrors } from "formik";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -26,13 +25,14 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
 });
 import "leaflet/dist/leaflet.css";
 
-import { Mail, Pin } from "lucide-react";
-import { MapPin } from "lucide-react";
-import { Smartphone } from "lucide-react";
-import { Building2 } from "lucide-react";
+import { Mail, Smartphone, Building2, MapPin, Globe } from "lucide-react";
 import Button from "@/components/UI/Button";
 import FAQ from "@/components/UI/FAQ";
 import Input from "@/components/UI/Input";
+
+import { motion } from "motion/react";
+import Form from "@/components/UI/Form";
+import { slideFromLeft } from "@/lib/variants";
 
 // Shape of form values
 
@@ -47,10 +47,10 @@ const Contact = () => {
   return (
     <section>
       <Banner
-        path="Home/contact"
-        title="contact us"
-        description="Although, final stages of the internal network gives a complete experience of The Parameter of Speculative Environment "
-      ></Banner>
+        path="Home / Contact"
+        title="Contact Us"
+        description="Get in touch with our team for inquiries, support, or custom IT solutions tailored to your business needs."
+      />
       <ContactWithoutBanner></ContactWithoutBanner>
 
       <FAQ></FAQ>
@@ -65,32 +65,52 @@ export const ContactWithoutBanner = () => {
     const { touched, errors, isSubmitting } = props;
 
     return (
-      <Form className="flex flex-col gap-4 flex-1/2 order-1 md:order-2">
+      <Form className="">
         {/* fullname */}
 
-        <Input type="fullname" name="fullname" placeholder="name"></Input>
+        <Input
+          type="input"
+          name="fullname"
+          placeholder="name"
+          label="name"
+          customClass="col-span-1"
+        ></Input>
 
         {/* email*/}
 
-        <Input type="email" name="email" placeholder="email"></Input>
+        <Input
+          type="email"
+          name="email"
+          placeholder="email"
+          customClass="col-span-1"
+        ></Input>
 
         {/* subject*/}
 
-        <Input type="subject" placeholder="subject" name="subject"></Input>
+        <Input
+          type="input"
+          placeholder="subject"
+          name="subject"
+          customClass="col-span-2"
+        ></Input>
 
         {/* message */}
 
         <Input
-          type="message"
+          type="input"
           name="message"
           inputType="textarea"
+          customClass="col-span-2"
           rows={8} // Optional: controls height
           placeholder="Your message..."
         ></Input>
 
-        <div className="self-center mt-4">
-          <Button text="Submit" type="submit" disabled={isSubmitting}></Button>
-        </div>
+        <Button
+          text="Submit"
+          type="submit"
+          disabled={isSubmitting}
+          customClass="self-center mt-4 col-span-2"
+        ></Button>
       </Form>
     );
   };
@@ -104,8 +124,8 @@ export const ContactWithoutBanner = () => {
 
   const ContactSchema = Yup.object().shape({
     fullname: Yup.string()
-      .required("Full name is required")
-      .min(3, "Full name must be at least 3 characters"),
+      .required("Name is required")
+      .min(3, "Name must be at least 3 characters"),
     email: Yup.string()
       .email("Invalid email format")
       .required("Email is required"),
@@ -140,54 +160,98 @@ export const ContactWithoutBanner = () => {
       <TitleDescription
         title="contact us for Any Questions "
         subtitle="contact "
-        des="As a matter of fact the unification of the coherent software provides a strict control over The Accomplishment of Intended Estimation "
+        des="We’re here to provide the answers you need. Our team ensures clear communication and reliable support to help you achieve your goals with confidence."
       ></TitleDescription>
 
-      <div className="flex flex-col  justify-between md:flex-row capitalize gap-8 ">
-        <div className="flex flex-col items-start gap-6 flex-1/2 order-2 md:order-1 ">
+      <motion.div className="flex flex-col gap-8  justify-between md:flex-row ">
+        <motion.div
+          variants={slideFromLeft}
+          initial="initial"
+          whileInView="animate"
+          animate="animate"
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex flex-col items-start gap-6  flex-1/2"
+        >
           <h1 className="text-2xl text-dark-gray font-bold mb-2">
             contact info :{" "}
           </h1>
 
-          <div className="flex items-center gap-4">
-            <Mail size={36} className="text-primary"></Mail>
-            <p className="font-bold text-lg">example@example.com</p>
+          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
+            <Mail className="text-primary contact-icon"></Mail>
+            <p className="font-bold text-lg">techidaCorporation@gmail.com</p>
           </div>
-          <div className="flex items-center gap-4">
-            <Smartphone size={36} className="text-primary"></Smartphone>
+          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
+            <Smartphone className="text-primary contact-icon"></Smartphone>
             <p className="font-bold text-lg">+213 456 6789</p>
           </div>
-          <div className="flex items-center gap-4">
-            <MapPin size={36} className="text-primary"></MapPin>
+          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
+            <MapPin className="text-primary contact-icon"></MapPin>
             <p className="font-bold text-lg">
               A108 Adam Street, New York, NY 535022
             </p>
           </div>
-          <div className="flex items-center gap-4">
-            <Building2 size={36} className="text-primary"></Building2>
+          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
+            <Globe className="text-primary contact-icon"></Globe>
+            <p className="font-bold text-lg">www.techida_corporation.com</p>
+          </div>
+          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
+            <Building2 className="text-primary contact-icon"></Building2>
             <p className="font-bold text-lg">techida-company</p>
           </div>
-
-          <MyMap></MyMap>
-        </div>
+        </motion.div>
         <MyForm />
-      </div>
+      </motion.div>
+      <MyMap></MyMap>
     </section>
   );
 };
 
 export function MyMap() {
   const [hovered, setHovered] = useState(false);
+  const [customIcon, setCustomIcon] = useState<any>(null);
+
+  // Custom icon for better visual appearance
+  useEffect(() => {
+    (async () => {
+      const L = await import("leaflet");
+      const icon = new L.Icon({
+        iconUrl:
+          "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+        shadowSize: [41, 41],
+      });
+      setCustomIcon(icon);
+    })();
+  }, []);
+
+  if (!customIcon) return null;
   return (
-    <div
+    <motion.div
       onMouseEnter={() => setHovered(true)}
-      className="shadow-md rounded-2xl"
       onMouseLeave={() => setHovered(false)}
+      className="shadow-md rounded-2xl mt-8 overflow-hidden"
       style={{
-        height: "250px",
+        height: "350px",
         width: "100%",
-        filter: hovered ? "grayscale(0%)" : "grayscale(100%)",
-        transition: "filter 0.3s ease",
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        filter: hovered ? "grayscale(0%)" : "grayscale(80%)",
+      }}
+      transition={{
+        opacity: { duration: 0.6 },
+        y: { duration: 0.6, ease: "backOut" },
+        filter: { duration: 0.5, ease: "easeInOut" },
+      }}
+      whileHover={{
+        boxShadow:
+          "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       }}
     >
       <MapContainer
@@ -195,17 +259,30 @@ export function MyMap() {
         zoom={13}
         style={{
           width: "100%",
-          height: "100%", // fills the wrapper
+          height: "100%",
+          transition: "transform 0.3s ease",
+          transform: hovered ? "scale(1.01)" : "scale(1)",
         }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="© OpenStreetMap contributors"
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>Hello from Leaflet!</Popup>
+        <Marker
+          position={[51.505, -0.09]}
+          icon={customIcon}
+          eventHandlers={{
+            mouseover: (e) => e.target.openPopup(),
+            mouseout: (e) => e.target.closePopup(),
+          }}
+        >
+          <Popup className="font-sans">
+            <div className="text-sm font-medium">
+              Hello from <span className="text-blue-600">Leaflet!</span>
+            </div>
+          </Popup>
         </Marker>
       </MapContainer>
-    </div>
+    </motion.div>
   );
 }

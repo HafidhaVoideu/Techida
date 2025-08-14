@@ -1,10 +1,15 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+
+import { motion } from "motion/react";
 
 type TButtonProps = {
   text: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+
+  customClass?: string;
   href?: string; // if provided, renders as a link
   onClick?: () => void;
 };
@@ -15,30 +20,36 @@ const Button = ({
   disabled = false,
   href,
   onClick,
+  customClass,
 }: TButtonProps) => {
   const baseClasses = `
-    hover:shadow-lg hover:scale-105 shadow-md font-sans tracking-wide border border-primary w-[200px]
-    text-md lg:text-md capitalize font-semibold hover:bg-white hover:text-dark-gray
-    transition-all duration-300 ease-in-out px-6 py-3 bg-primary text-button-primary rounded-3xl
+    hover:shadow-lg hover:scale-105 shadow-md font-sans tracking-wide border border-primary w-full justify-center max-w-[200px]
+    text-sm md:text-md capitalize font-semibold hover:bg-white hover:text-dark-gray
+    transition-all duration-300 ease-in-out px-2  sm:px-6 py-3 bg-primary text-button-primary rounded-3xl cursor-pointer ${customClass}
   `;
 
   if (href) {
     return (
-      <Link href={href} className={baseClasses}>
+      <Link href={href || "/login"} className={baseClasses}>
         {text}
       </Link>
     );
   }
 
   return (
-    <button
+    <motion.button
+      onClick={onClick}
       type={type}
       disabled={disabled}
-      onClick={onClick}
       className={baseClasses}
+      whileHover={{
+        boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)",
+      }}
+      whileTap={{ scale: 0.85 }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
       {text}
-    </button>
+    </motion.button>
   );
 };
 

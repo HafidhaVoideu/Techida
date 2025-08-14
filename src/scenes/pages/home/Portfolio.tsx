@@ -6,6 +6,9 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import { filtersData, portfolioData } from "@/lib/contants";
 
+import { AnimatePresence, motion } from "motion/react";
+import { staggerContainerVariants, staggerItemVariants } from "@/lib/variants";
+
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState("all");
   const filterdData = useMemo(() => {
@@ -17,10 +20,10 @@ const Portfolio = () => {
   return (
     <section>
       <Banner
-        path="home / portfolio"
-        title="our portfolio"
-        description="Although, final stages of the internal network gives a complete experience of The Parameter of Speculative Environment "
-      ></Banner>
+        path="Home / Portfolio"
+        title="Our Portfolio"
+        description="Explore our past projects and see how we’ve helped clients achieve success through innovative and reliable IT solutions."
+      />
       <section className="container">
         <TitleDescription
           subtitle="portfolio "
@@ -49,11 +52,18 @@ const Portfolio = () => {
             </li>
           ))}
         </ul>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  md:grid-cols-3  gap-6 auto-rows-[400px]">
-          {filterdData.map((p) => (
-            <PortfolioItem key={p.id} {...p}></PortfolioItem>
-          ))}
-        </div>
+        <motion.div
+          variants={staggerContainerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  md:grid-cols-3  gap-6 auto-rows-[400px]"
+        >
+          <AnimatePresence mode="popLayout">
+            {filterdData.map((p) => (
+              <PortfolioItem key={`${p.id}-${p.projectName}`} {...p} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </section>
       <FAQ></FAQ>
     </section>
@@ -70,14 +80,19 @@ const PortfolioItem = ({
   technologies,
 }: TportfolioProps) => {
   return (
-    <article className="relative overflow-hidden group rounded-lg shadow-lg">
+    <motion.article
+      variants={staggerItemVariants}
+      layout
+      exit="exit"
+      className="relative overflow-hidden group rounded-lg shadow-lg "
+    >
       <Image
         src={image}
         alt={projectName}
         width={300}
         height={300}
         objectFit="cover"
-        className="w-full h-full  transition-transform duration-500 group-hover:scale-110"
+        className="w-full h-full  transition-transform duration-500 group-hover:scale-110 "
       ></Image>
 
       {/* Overlay */}
@@ -100,6 +115,6 @@ const PortfolioItem = ({
           ))}
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 };

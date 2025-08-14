@@ -1,3 +1,4 @@
+"use client";
 import Banner from "@/components/UI/Banner";
 import TitleDescription from "@/components/UI/TitleDescription";
 import React from "react";
@@ -6,18 +7,21 @@ import { TServiceItem } from "@/lib/types";
 import { MoveRight } from "lucide-react";
 
 import Link from "next/link";
-import Opacity from "@/components/Animation/Opacity";
 import Pricing from "./Pricing";
+
+import { motion } from "motion/react";
+
+import { Variants } from "framer-motion";
+import { staggerContainerVariants, staggerItemVariants } from "@/lib/variants";
 
 const Services = () => {
   return (
     <section>
       <Banner
         path="Home / Services"
-        title="our services"
-        description="Although, final stages of the internal network gives a complete experience of The Parameter of Speculative Environment "
-      ></Banner>
-
+        title="Our Services"
+        description="Discover our wide range of professional IT solutions designed to help your business grow, innovate, and stay ahead in today’s competitive market."
+      />
       <ServicesList></ServicesList>
 
       <Pricing></Pricing>
@@ -31,51 +35,88 @@ const ServiceItem = ({
   title,
   description,
   link,
-}: TServiceItem) => {
+  variants,
+}: TServiceItem & { variants?: Variants }) => {
   return (
-    <article className=" text-dark-gray bg-light-gray  flex flex-col items-start justify-center gap-4 p-6  max-w-[500px]  mx-auto rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
-      <div className=" text-primary mb-4">
-        <Icon size={62}></Icon>
-      </div>
-      <h3 className="text-xl font-bold">{title}</h3>
-      <p>{description}</p>
+    <motion.div variants={variants}>
+      <motion.article
+        className="group relative overflow-hidden text-dark-gray bg-light-gray flex flex-col items-start justify-center gap-4 p-6 max-w-[500px] mx-auto rounded-lg shadow-sm hover:shadow-lg transition-all duration-300"
+        whileHover="hover"
+        initial="rest"
+        animate="rest"
+      >
+        {/* Animated overlay */}
+        <motion.div
+          className="absolute top-0 left-0 h-full bg-primary z-0  pointer-events-none "
+          variants={{
+            rest: { width: "0%" },
+            hover: { width: "100%" },
+          }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        />
 
-      <Link className="capitalize text-primary font-bold" href={link}>
-        learn more{" "}
-        <MoveRight className="  ml-4 inline-block" size={28}></MoveRight>{" "}
-      </Link>
-    </article>
+        {/* Content */}
+        <div className="relative z-10 text-primary mb-4 group-hover:text-white">
+          <Icon className="service-icon" />
+        </div>
+        <h3 className="relative z-10  text-xl  md:text-2xl font-bold group-hover:text-white">
+          {title}
+        </h3>
+        <p className="relative z-10 group-hover:text-white">{description}</p>
+
+        <motion.div
+          className="relative z-10"
+          variants={{
+            rest: { x: 0 },
+            hover: { x: 5 },
+          }}
+        >
+          <Link
+            className="capitalize text-primary font-bold inline-flex items-center group-hover:text-white "
+            href={link}
+          >
+            learn more <MoveRight className="ml-4 inline-block" size={28} />
+          </Link>
+        </motion.div>
+      </motion.article>
+    </motion.div>
   );
 };
 
 export const ServicesList = () => {
   return (
-    <Opacity>
-      <div className="container">
-        {/* services list */}
+    <div className="container">
+      {/* services list */}
 
-        <TitleDescription
-          subtitle="our services "
-          title="What We’re Offering?"
-          des=" As a matter of fact the unification of the coherent software provides a strict control over The Accomplishment of Intended Estimation
+      <TitleDescription
+        subtitle="our services "
+        title="What We’re Offering?"
+        des="We deliver tailored software solutions that unify technology and innovation, giving you complete control over your projects and ensuring accurate, measurable results every time.
 "
-        ></TitleDescription>
+      ></TitleDescription>
 
-        <TitleDescription title="" subtitle="" des=""></TitleDescription>
-        <section className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {servicesData.map((service) => (
-            <ServiceItem
-              key={service.id}
-              icon={service.icon}
-              id={service.id}
-              title={service.title}
-              description={service.description}
-              link={service.link}
-            />
-          ))}
-        </section>
-      </div>
-    </Opacity>
+      <TitleDescription title="" subtitle="" des=""></TitleDescription>
+      <motion.section
+        variants={staggerContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        animate="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {servicesData.map((service) => (
+          <ServiceItem
+            key={service.id}
+            variants={staggerItemVariants}
+            icon={service.icon}
+            id={service.id}
+            title={service.title}
+            description={service.description}
+            link={service.link}
+          />
+        ))}
+      </motion.section>
+    </div>
   );
 };
 
