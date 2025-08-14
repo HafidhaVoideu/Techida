@@ -117,6 +117,10 @@ img {
   width: 45px;
 }
 .normal-icon {
+  height: 25px;
+  width: 25px;
+}
+.star-icon {
   height: 20px;
   width: 20px;
 }
@@ -193,6 +197,11 @@ img {
   .contact-icon {
     height: 40px;
     width: 40px;
+  }
+
+  .star-icon {
+    height: 25px;
+    width: 25px;
   }
 
   h1,
