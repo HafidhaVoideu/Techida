@@ -80,33 +80,6 @@ img {
   margin: 0em auto;
 }
 
-.slick-slide {
-  padding: 0 10px;
-}
-
-/* Custom dot styles */
-.testimonial-slider .slick-dots {
-  bottom: -20px;
-  color: #49af53;
-}
-
-.testimonial-slider .slick-dots li {
-  margin: 0 4px;
-}
-
-.testimonial-slider .slick-dots li button:before {
-  font-size: 10px;
-  color: #b9b8b8; /* inactive dot color */
-  opacity: 1;
-}
-
-.testimonial-slider .slick-dots li.slick-active button:before {
-  color: #49af53; /* active dot color (amber-400) */
-}
-/* .group-hover\:text-white {
-  transition: color 0.3s ease;
-} */
-
 ::selection {
   background-color: #49af53;
   color: rgb(255, 255, 255);
