@@ -28,19 +28,12 @@ const Testimonials = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 900,
-        settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -50,20 +43,22 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="container">
+    <section className="container px-4 mx-auto">
       <TitleDescription
         subtitle="Testimonials"
         title="Customers Testimonials"
         des="Hear from our satisfied clients who have experienced the quality, reliability, and results our solutions deliver."
       />
 
-      <Slider {...settings} className="testimonial-slider  pb-9">
-        {testimonialsData.map((testimonial) => (
-          <div key={testimonial.id} className="px-2">
-            <TestimonialCard {...testimonial} />
-          </div>
-        ))}
-      </Slider>
+      <div className="px-4">
+        <Slider {...settings} className="testimonial-slider">
+          {testimonialsData.map((testimonial) => (
+            <div key={testimonial.id} className="px-2 outline-none">
+              <TestimonialCard {...testimonial} />
+            </div>
+          ))}
+        </Slider>
+      </div>
     </section>
   );
 };
@@ -80,13 +75,14 @@ const TestimonialCard = ({
 
   const baseClass = "text-amber-400 normal-icon";
 
-  const MAX_CHARACTERS = 100; // Adjust this number as needed
+  const MAX_CHARACTERS = 100;
   const truncatedTestimonial =
     testimonial.length > MAX_CHARACTERS
       ? `${testimonial.substring(0, MAX_CHARACTERS)}...`
       : testimonial;
+
   return (
-    <article className="bg-light-gray px-6  mb-4 py-8 rounded-xl shadow-lg  hover:shadow-xl transition-shadow duration-300 mni-h-[280px] shrink-0">
+    <article className="bg-light-gray px-6 mb-4 py-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full min-h-[240px] mx-2">
       <div className="flex flex-col items-center text-center md:flex-row md:text-left gap-4 mb-4">
         <div className="relative w-16 h-16 shrink-0">
           <Image

@@ -53,6 +53,7 @@ html {
 }
 body {
   background-color: rgb(var(--background));
+  scroll-behavior: smooth;
 }
 
 img {
@@ -192,5 +193,10 @@ img {
   .contact-icon {
     height: 40px;
     width: 40px;
+  }
+
+  h1,
+  h2 {
+    line-height: normal;
   }
 }

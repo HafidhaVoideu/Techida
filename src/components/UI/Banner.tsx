@@ -47,7 +47,7 @@ const Banner = ({ path, title, description }: TBanner) => {
         </motion.p>
 
         <motion.h1
-          className="text-4xl md:text-5xl lg:text-6xl font-bold my-6 "
+          className="text-3xl md:text-5xl lg:text-6xl font-bold my-6 "
           variants={itemVariants}
         >
           {title}

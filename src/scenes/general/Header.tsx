@@ -150,15 +150,17 @@ const Header = () => {
           setIsMenuOpen={setIsMenuOpen}
         />
 
-        <Image
-          src="/logo.png"
-          alt="Logo"
-          width={120}
-          height={120}
-          className="
-        h-auto w-[90px] md:w-[105px]
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={120}
+            height={120}
+            className="
+        h-auto w-[100px] md:w-[110px]
        lg:w-[120px]"
-        />
+          />
+        </Link>
 
         <nav className="hidden lg:flex gap-x-1">
           <MenuLinks
@@ -182,7 +184,7 @@ const Header = () => {
           <MenuIcon
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="block lg:hidden cursor-pointer"
-            size={26}
+            size={28}
           />
         </div>
       </div>

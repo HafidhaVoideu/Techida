@@ -317,19 +317,23 @@ export const siteMap = {
     {
       id: 1,
       label: "home",
+      href: "/",
     },
 
     {
       id: 3,
       label: "services",
+      href: "/services",
     },
     {
       id: 2,
       label: "about",
+      href: "/about",
     },
     {
       id: 4,
       label: "contact",
+      href: "/contact",
     },
   ],
 };

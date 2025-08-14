@@ -107,7 +107,7 @@ const ServiceCardComponent = ({
         whileHover="hover"
         initial="rest"
         animate="rest"
-        className=" group relative overflow-hidden bg-light-gray   flex px-2 py-6 items-center flex-start gap-4 rounded-lg shadow-md w-full max-w-[300px] "
+        className=" group relative overflow-hidden bg-light-gray  flex px-2 py-6 items-center justify-center md:justify-start gap-3 rounded-lg shadow-md w-full max-w-[300px] "
       >
         {/* Animated overlay */}
         <motion.div
@@ -122,7 +122,7 @@ const ServiceCardComponent = ({
         <div className="text-primary  relative z-10 font-semibold group-hover:text-white">
           <Icon size={32} />
         </div>
-        <h2 className="text-md md:text-lg relative z-10  text-center font-bold group-hover:text-white">
+        <h2 className="  text-sm md:text-md lg:text-lg relative z-10  text-center font-bold group-hover:text-white   ">
           {title}
         </h2>
       </motion.div>

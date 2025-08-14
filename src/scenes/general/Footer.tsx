@@ -70,7 +70,7 @@ const ListItem = ({ id, elements, list }: TFooterList) => {
           className="ml-2 mb-4 min-w-[180px] hover:text-primary cursor-pointer transition-all duration-300 ease-in-out "
         >
           {" "}
-          <Link href="#">{e.label}</Link>
+          <Link href={e.href || "#"}>{e.label}</Link>
         </li>
       ))}
     </ul>

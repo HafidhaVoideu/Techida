@@ -11,11 +11,11 @@ export default function NotFound() {
         width={500}
         height={500}
       ></Image>
-      <h1 className="text-5xl font-bold mb-4 text-dark-gray my-4">
+      <h1 className=" text-3xl sm:text-4xl   lg:text-5xl font-bold mb-4 text-dark-gray my-4">
         404 - Page Not Found
       </h1>
 
-      <p className="text-lg text-gray-500 mb-6">
+      <p className=" text-md lg:text-lg text-gray-500 mb-6">
         Sorry, the page you’re looking for doesn’t exist.
       </p>
 

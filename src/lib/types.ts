@@ -88,11 +88,13 @@ export type TPricingCard = {
 type TListItem = {
   id: number;
   label: string;
+  href?: string;
 };
 
 export type TFooterList = {
   id: string;
   list: string;
+
   elements: TListItem[];
 };
 
