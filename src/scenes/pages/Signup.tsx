@@ -122,44 +122,44 @@ const Signup = () => {
     },
   })(InnerForm);
   return (
-    <section className="container">
-      <div className="flex flex-col md:flex-row justify-between gap-24">
-        <motion.div
-          variants={slideFromLeft}
-          initial="initial"
-          whileInView="animate"
-          animate="animate"
-          viewport={{ once: true, amount: 0.2 }}
-          className="flex-1/2 order-2 md:order-1"
-        >
-          <Image
-            src="/assets/signup.svg"
-            alt="login-image"
-            width={500}
-            height={500}
-            className="h-full w-full"
-            priority
-          ></Image>
-        </motion.div>
+    <section className="container flex flex-col  lg:items-start md:flex-row justify-between gap-24">
+      <motion.div
+        variants={slideFromLeft}
+        initial="initial"
+        whileInView="animate"
+        animate="animate"
+        viewport={{ once: true, amount: 0.2 }}
+        className="flex-1/2 max-w-[600px] order-2 md:order-1"
+      >
+        <Image
+          src="/assets/signup.svg"
+          alt="login-image"
+          width={500}
+          height={500}
+          className="h-full w-full"
+          priority
+        ></Image>
+      </motion.div>
 
-        <div className="capitalize  flex-1/2 order-1 md:order-2  text-dark-gray ">
-          <h1 className=" text-4xl md:text-5xl  font-bold">sign up</h1>
+      <div className=" flex-1/2 order-1 md:order-2  text-dark-gray ">
+        <h1 className=" text-3xl sm:text-4xl md:text-5xl  font-bold">
+          Sign up
+        </h1>
 
-          <p className="my-4 text-md">
-            have an account already?
-            <Link href="/login" className="text-primary font-[600]">
-              {" "}
-              login
-            </Link>
-          </p>
+        <p className="my-4 text-md">
+          have an account already?
+          <Link href="/login" className="text-primary font-[600]">
+            {" "}
+            login
+          </Link>
+        </p>
 
-          <MyForm
-            initialEmail=""
-            initialPassword=""
-            initialConfirmPassword=""
-            initialUsername=""
-          />
-        </div>
+        <MyForm
+          initialEmail=""
+          initialPassword=""
+          initialConfirmPassword=""
+          initialUsername=""
+        />
       </div>
     </section>
   );

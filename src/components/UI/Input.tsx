@@ -2,6 +2,7 @@ import React from "react";
 
 import { Field, ErrorMessage } from "formik";
 import { Tinputprops } from "@/lib/types";
+import { AnimatePresence, motion } from "motion/react";
 
 const Input = ({
   name,
@@ -15,7 +16,7 @@ const Input = ({
   rows,
 }: Tinputprops) => {
   return (
-    <div className={`w-full flex-col flex gap-1   ${customClass} cols-span-1`}>
+    <div className={`w-full flex-col flex gap-1    ${customClass} `}>
       <label className=" font-semibold capitalize mb-2">
         {label ? label : name}
       </label>
@@ -30,13 +31,23 @@ const Input = ({
          focus:border-primary focus:outline-none
         "
       />
-      <ErrorMessage
-        name={name}
-        component="div"
-        className="text-red-600 font-semibold text-sm mt-2
-        relative before:content-['*'] before:mr-1 before:text-red-600 before:inline-block
-        "
-      ></ErrorMessage>
+
+      <AnimatePresence mode="wait">
+        <ErrorMessage name={name}>
+          {(errorMsg) => (
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.2 }}
+              className="text-red-600 font-semibold text-sm mt-2
+                relative before:content-['*'] before:mr-1 before:text-red-600"
+            >
+              {errorMsg}
+            </motion.div>
+          )}
+        </ErrorMessage>
+      </AnimatePresence>
     </div>
   );
 };

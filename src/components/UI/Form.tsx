@@ -10,7 +10,7 @@ type TFormProps = {
   className?: string;
 };
 
-const Form = ({ children, className = "max-w-[450px]" }: TFormProps) => {
+const Form = ({ children, className = "md:max-w-[450px]" }: TFormProps) => {
   return (
     <motion.div
       variants={slideFromRight}
@@ -21,7 +21,7 @@ const Form = ({ children, className = "max-w-[450px]" }: TFormProps) => {
       className="flex-1/2"
     >
       <FormikForm
-        className={` grid grid-cols-1 md:grid-cols-2  gap-4 order-1 md:order-2 w-full justify-items-center ${className} `}
+        className={` grid grid-cols-1 md:grid-cols-2  gap-4 order-1 md:order-2 w-full justify-items-center   ${className} `}
       >
         {children}
       </FormikForm>
