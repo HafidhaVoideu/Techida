@@ -1,5 +1,6 @@
 import { type LucideIcon } from "lucide-react";
 import { Variants } from "framer-motion";
+import { EmblaOptionsType } from "embla-carousel";
 
 export type TServiceItem = {
   id: number;
@@ -131,6 +132,10 @@ export type TtestimonialsProps = {
   image: string;
   name: string;
   testimonial: string;
+};
+export type TtestimonialsCarouselProps = {
+  slides: TtestimonialsProps[];
+  options?: EmblaOptionsType;
 };
 
 export type TportfolioProps = {

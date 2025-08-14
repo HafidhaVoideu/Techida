@@ -51,7 +51,7 @@ const PricingCard = ({ options, offerType, price, trial }: TPricingCard) => {
   return (
     <motion.article
       variants={staggerItemVariants}
-      className=" group border-2 border-primary/40  max-w-[350px]  w-full flex flex-col gap-8 items-start   shadow-sm p-8 rounded-2xl  hover:bg-primary  flex-1 transition-all duration-300 hover:scale-105"
+      className=" group border-2 border-primary/40  max-w-[300px]  w-full flex flex-col gap-8 items-start   shadow-sm p-8 rounded-2xl  hover:bg-primary  flex-1 transition-all duration-300 hover:scale-105"
     >
       {/* <Icon className="text-dark-gray" size={48}></Icon> */}
 

@@ -8,40 +8,13 @@ import {
 } from "react-icons/ti";
 import Image from "next/image";
 import { testimonialsData } from "@/lib/contants";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { EmblaOptionsType } from "embla-carousel";
+import EmblaCarousel from "@/components/UI/carousel/EmblaCarousel";
 
 const Testimonials = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    autoplay: true,
-    arrows: false,
-    pauseOnHover: true,
-    autoplaySpeed: 3000,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
+  const OPTIONS: EmblaOptionsType = { loop: true };
   return (
     <section className="container px-4">
       <TitleDescription
@@ -50,20 +23,12 @@ const Testimonials = () => {
         des="Hear from our satisfied clients who have experienced the quality, reliability, and results our solutions deliver."
       />
 
-      <div className="px-4">
-        <Slider {...settings} className="testimonial-slider">
-          {testimonialsData.map((testimonial) => (
-            <div key={testimonial.id} className="px-2 outline-none">
-              <TestimonialCard {...testimonial} />
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <EmblaCarousel slides={testimonialsData} options={OPTIONS} />
     </section>
   );
 };
 
-const TestimonialCard = ({
+export const TestimonialCard = ({
   name,
   image,
   rating,
@@ -82,7 +47,7 @@ const TestimonialCard = ({
       : testimonial;
 
   return (
-    <article className="bg-light-gray px-6 mb-4 py-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full h-full min-h-[250px] mx-2">
+    <article className="bg-light-gray px-6 mb-4 py-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 min-w-[280px]  min-h-[250px] mx-2">
       <div className="flex flex-col items-center text-center md:flex-row md:text-left gap-4 mb-4">
         <div className="relative w-16 h-16 shrink-0">
           <Image
