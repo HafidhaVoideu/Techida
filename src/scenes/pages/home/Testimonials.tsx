@@ -43,7 +43,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="container px-4 mx-auto">
+    <section className="container px-4">
       <TitleDescription
         subtitle="Testimonials"
         title="Customers Testimonials"
@@ -82,7 +82,7 @@ const TestimonialCard = ({
       : testimonial;
 
   return (
-    <article className="bg-light-gray px-6 mb-4 py-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full mx-2">
+    <article className="bg-light-gray px-6 mb-4 py-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full h-full min-h-[250px] mx-2">
       <div className="flex flex-col items-center text-center md:flex-row md:text-left gap-4 mb-4">
         <div className="relative w-16 h-16 shrink-0">
           <Image
