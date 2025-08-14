@@ -31,7 +31,6 @@ const Services = () => {
 
 const ServiceItem = ({
   icon: Icon,
-  id,
   title,
   description,
   link,
@@ -89,8 +88,8 @@ export const ServicesList = () => {
       {/* services list */}
 
       <TitleDescription
-        subtitle="our services "
-        title="What We’re Offering?"
+        subtitle="Our services "
+        title="What we’re offering?"
         des="We deliver tailored software solutions that unify technology and innovation, giving you complete control over your projects and ensuring accurate, measurable results every time.
 "
       ></TitleDescription>

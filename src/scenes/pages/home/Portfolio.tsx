@@ -73,7 +73,6 @@ const Portfolio = () => {
 export default Portfolio;
 
 const PortfolioItem = ({
-  id,
   projectName,
   projectType,
   image,

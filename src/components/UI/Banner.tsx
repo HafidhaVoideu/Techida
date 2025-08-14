@@ -30,7 +30,7 @@ const Banner = ({ path, title, description }: TBanner) => {
 
   return (
     <motion.div
-      className="bg-stable-gray  w-full text-white p-4 mb-8 capitalize overflow-hidden"
+      className="bg-stable-gray  w-full text-white py-8 mb-8 capitalize overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

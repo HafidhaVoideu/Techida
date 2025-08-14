@@ -4,17 +4,52 @@ import { Facebook } from "lucide-react";
 import { Youtube } from "lucide-react";
 import { Instagram } from "lucide-react";
 
-// experience icons
+import {
+  Gift,
+  Wallet,
+  Star,
+  Crown,
+  Mail,
+  Smartphone,
+  MapPin,
+  Globe,
+  Building2,
+  UserRoundPen,
+  Clock,
+  MessageCircle,
+  Gamepad2,
+  Headset,
+  Earth,
+} from "lucide-react";
 
-import { Earth } from "lucide-react";
-import { Headset } from "lucide-react";
-import { Gamepad2 } from "lucide-react";
+export const contactInfoData = [
+  {
+    id: 1,
+    icon: Mail,
+    info: "techidaCorporation@gmail.com",
+  },
+  {
+    id: 2,
+    icon: Smartphone,
+    info: "+213 456 6789",
+  },
+  {
+    id: 3,
+    icon: MapPin,
+    info: "A108 Adam Street, New York, NY 535022",
+  },
+  {
+    id: 4,
+    icon: Globe,
+    info: "www.techida_corporation.com",
+  },
+  {
+    id: 5,
+    icon: Building2,
+    info: "techida-company",
+  },
+];
 
-import { Gift, Wallet, Star, Crown } from "lucide-react";
-
-import { UserRoundPen } from "lucide-react";
-import { Clock } from "lucide-react";
-import { MessageCircle } from "lucide-react";
 export const menu_items = [
   {
     label: "Home",

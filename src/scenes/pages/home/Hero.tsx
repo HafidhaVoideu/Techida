@@ -2,7 +2,6 @@
 import React from "react";
 
 import Image from "next/image";
-import ParticlesComponent from "@/components/UI/Particles";
 
 import Link from "next/link";
 import Button from "@/components/UI/Button";
@@ -12,7 +11,6 @@ import { ICONS } from "@/lib/contants";
 import { motion } from "motion/react";
 
 import { slideFromLeft, slideFromRight } from "@/lib/variants";
-import { Icon } from "lucide-react";
 const Hero = () => {
   return (
     <section className=" container">

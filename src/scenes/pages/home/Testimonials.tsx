@@ -21,6 +21,7 @@ const Testimonials = () => {
     slidesToScroll: 3,
     initialSlide: 0,
     autoplay: true,
+    arrows: false,
     pauseOnHover: true,
     autoplaySpeed: 3000,
     responsive: [
@@ -56,7 +57,7 @@ const Testimonials = () => {
         des="Hear from our satisfied clients who have experienced the quality, reliability, and results our solutions deliver."
       />
 
-      <Slider {...settings} className=" pb-9">
+      <Slider {...settings} className="testimonial-slider  pb-9">
         {testimonialsData.map((testimonial) => (
           <div key={testimonial.id} className="px-2">
             <TestimonialCard {...testimonial} />
@@ -85,7 +86,7 @@ const TestimonialCard = ({
       ? `${testimonial.substring(0, MAX_CHARACTERS)}...`
       : testimonial;
   return (
-    <article className="bg-light-gray px-6  mb-4 py-8 rounded-xl shadow-lg  hover:shadow-xl transition-shadow duration-300 mni=h-[230px] shrink-0">
+    <article className="bg-light-gray px-6  mb-4 py-8 rounded-xl shadow-lg  hover:shadow-xl transition-shadow duration-300 mni-h-[280px] shrink-0">
       <div className="flex flex-col items-center text-center md:flex-row md:text-left gap-4 mb-4">
         <div className="relative w-16 h-16 shrink-0">
           <Image
@@ -110,7 +111,9 @@ const TestimonialCard = ({
           </div>
         </div>
       </div>
-      <p className="text-dark-gray italic">"{truncatedTestimonial}"</p>
+      <p className="text-dark-gray italic">
+        &quot;{truncatedTestimonial}&quot;
+      </p>
     </article>
   );
 };

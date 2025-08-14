@@ -1,6 +1,5 @@
 import { type LucideIcon } from "lucide-react";
-import Title from "./../components/UI/Title";
-import { Variant, Variants } from "framer-motion";
+import { Variants } from "framer-motion";
 
 export type TServiceItem = {
   id: number;
@@ -16,7 +15,7 @@ export type TMenuItem = {
 };
 
 export type TMenuLinksProps = {
-  variants: any;
+  variants: Variants;
   items: TMenuItem[];
   activeLink: string;
   setIsMenuOpen?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,6 +30,13 @@ export type TExperienceItem = {
   variants: Variants;
   icon: LucideIcon;
 };
+export type TmobileMenuProps = {
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  menu_items: TMenuItem[];
+  activeLink: string;
+  setActiveLink: React.Dispatch<React.SetStateAction<string>>;
+};
 
 export type TBanner = {
   path: string;
@@ -43,7 +49,7 @@ export type TypeTitleDescription = {
   subtitle?: string;
   des?: string;
   className?: string;
-  isTheLastWordHighlighted?: Boolean;
+  isTheLastWordHighlighted?: boolean;
 };
 
 export type TExperienceBar = {
@@ -172,4 +178,9 @@ export type BrandItemProps = {
   brands: TBrandItemProps[];
   from?: number | string;
   to?: number | string;
+};
+
+export type TContactItemProps = {
+  info: string;
+  icon: LucideIcon;
 };

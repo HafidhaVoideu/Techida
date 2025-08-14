@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
-import Header from "@/scenes/general/Header";
-import Footer from "@/scenes/general/Footer";
-import { ThemeProvider } from "next-themes";
-import Layout from "@/components/Animation/Layout";
-import { SkeletonTheme } from "react-loading-skeleton";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { ThemeProvider } from "next-themes";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -19,10 +12,6 @@ const roboto = Roboto({
   weight: ["400", "700", "500", "600", "900", "200", "300"], // or single: '400'
   style: ["normal", "italic"], // optional
   display: "swap", // optional
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {

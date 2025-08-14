@@ -24,7 +24,7 @@ interface FormValues {
 
 const Signup = () => {
   const InnerForm = (props: FormikProps<FormValues>) => {
-    const { touched, errors, isSubmitting } = props;
+    const { isSubmitting } = props;
 
     return (
       <Form>
@@ -128,6 +128,7 @@ const Signup = () => {
           variants={slideFromLeft}
           initial="initial"
           whileInView="animate"
+          animate="animate"
           viewport={{ once: true, amount: 0.2 }}
           className="flex-1/2 order-2 md:order-1"
         >

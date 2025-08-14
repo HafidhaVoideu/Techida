@@ -8,7 +8,6 @@ import Link from "next/link";
 import { Tag } from "lucide-react";
 import { Calendar } from "lucide-react";
 
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Image from "next/image";
 
@@ -134,10 +133,10 @@ const BlogItem = ({ id = 1 }) => {
   );
 };
 
-const PaginationItem = ({ page = 0 }) => {
-  return (
-    <button className="bg-primary font-bold  flex items-center justify-center  h-[35px] w-[35px] rounded-full text-white">
-      {page}
-    </button>
-  );
-};
+// const PaginationItem = ({ page = 0 }) => {
+//   return (
+//     <button className="bg-primary font-bold  flex items-center justify-center  h-[35px] w-[35px] rounded-full text-white">
+//       {page}
+//     </button>
+//   );
+// };

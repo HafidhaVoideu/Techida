@@ -122,7 +122,7 @@ const MainBlog = () => {
 
 export default MainBlog;
 
-const BlogInfoItem = ({ icon: Icon, info, id }: tBlogItemProps) => {
+const BlogInfoItem = ({ icon: Icon, info }: tBlogItemProps) => {
   return (
     <motion.div
       className="flex items-center gap-3"

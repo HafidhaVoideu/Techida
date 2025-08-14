@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import TitleDescription from "@/components/UI/TitleDescription";
-import { TPricingCard, TpricingOptions } from "@/lib/types";
-import Button from "@/components/UI/Button";
+import { TPricingCard } from "@/lib/types";
 import { pricingData } from "@/lib/contants";
 
 import { CircleCheck } from "lucide-react";
@@ -15,8 +14,8 @@ const Pricing = () => {
   return (
     <section className="container mt-12">
       <TitleDescription
-        subtitle="pricing "
-        title="our pricing"
+        subtitle="Pricing "
+        title="Our pricing"
         des=" As a matter of fact the unification of the coherent software provides a strict control over The Accomplishment of Intended Estimation
 free
 00$
@@ -36,7 +35,7 @@ per project
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-8  justify-between  "
+        className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8  justify-items-center"
       >
         {pricingData.map((p) => (
           <PricingCard key={p.id} {...p}></PricingCard>
@@ -48,17 +47,11 @@ per project
 
 export default Pricing;
 
-const PricingCard = ({
-  options,
-  offerType,
-  price,
-  trial,
-  icon: Icon,
-}: TPricingCard) => {
+const PricingCard = ({ options, offerType, price, trial }: TPricingCard) => {
   return (
     <motion.article
       variants={staggerItemVariants}
-      className=" group border-2 border-primary/40    flex flex-col gap-8 items-start   shadow-sm p-8 rounded-2xl  hover:bg-primary  flex-1 transition-all duration-300 hover:scale-105"
+      className=" group border-2 border-primary/40  max-w-[350px]  w-full flex flex-col gap-8 items-start   shadow-sm p-8 rounded-2xl  hover:bg-primary  flex-1 transition-all duration-300 hover:scale-105"
     >
       {/* <Icon className="text-dark-gray" size={48}></Icon> */}
 
@@ -83,7 +76,7 @@ const PricingCard = ({
 
       <div className="w-full h-[1px] bg-gray-100  "></div>
 
-      <ul className=" text-md group-hover:text-white">
+      <ul className=" text-md group-hover:text-background">
         {options.map((o) => (
           <div key={o.id} className=" mb-4 flex items-center gap-3 flex-wrap ">
             <div className="">
@@ -94,7 +87,7 @@ const PricingCard = ({
               )}
             </div>
 
-            <li className="flex-1/2 text-md text-dark-gray"> {o.option}</li>
+            <li className="flex-1/2 text-md  "> {o.option}</li>
           </div>
         ))}
       </ul>

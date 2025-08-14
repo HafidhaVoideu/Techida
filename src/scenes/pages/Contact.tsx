@@ -4,9 +4,9 @@ import TitleDescription from "@/components/UI/TitleDescription";
 import React, { useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
+import { Icon } from "leaflet";
 import * as Yup from "yup";
-import L from "leaflet";
-import { withFormik, FormikProps, FormikErrors } from "formik";
+import { withFormik, FormikProps } from "formik";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -25,7 +25,6 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
 });
 import "leaflet/dist/leaflet.css";
 
-import { Mail, Smartphone, Building2, MapPin, Globe } from "lucide-react";
 import Button from "@/components/UI/Button";
 import FAQ from "@/components/UI/FAQ";
 import Input from "@/components/UI/Input";
@@ -33,6 +32,8 @@ import Input from "@/components/UI/Input";
 import { motion } from "motion/react";
 import Form from "@/components/UI/Form";
 import { slideFromLeft } from "@/lib/variants";
+import { TContactItemProps } from "@/lib/types";
+import { contactInfoData } from "@/lib/contants";
 
 // Shape of form values
 
@@ -62,7 +63,7 @@ export default Contact;
 
 export const ContactWithoutBanner = () => {
   const InnerForm = (props: FormikProps<FormValues>) => {
-    const { touched, errors, isSubmitting } = props;
+    const { isSubmitting } = props;
 
     return (
       <Form className="">
@@ -73,7 +74,7 @@ export const ContactWithoutBanner = () => {
           name="fullname"
           placeholder="name"
           label="name"
-          customClass="col-span-1"
+          customClass="md:col-span-1"
         ></Input>
 
         {/* email*/}
@@ -82,7 +83,7 @@ export const ContactWithoutBanner = () => {
           type="email"
           name="email"
           placeholder="email"
-          customClass="col-span-1"
+          customClass="md:col-span-1"
         ></Input>
 
         {/* subject*/}
@@ -91,7 +92,7 @@ export const ContactWithoutBanner = () => {
           type="input"
           placeholder="subject"
           name="subject"
-          customClass="col-span-2"
+          customClass="md:col-span-2"
         ></Input>
 
         {/* message */}
@@ -100,7 +101,7 @@ export const ContactWithoutBanner = () => {
           type="input"
           name="message"
           inputType="textarea"
-          customClass="col-span-2"
+          customClass="md:col-span-2"
           rows={8} // Optional: controls height
           placeholder="Your message..."
         ></Input>
@@ -109,7 +110,7 @@ export const ContactWithoutBanner = () => {
           text="Submit"
           type="submit"
           disabled={isSubmitting}
-          customClass="self-center mt-4 col-span-2"
+          customClass="self-center mt-4 md:col-span-2"
         ></Button>
       </Form>
     );
@@ -158,8 +159,8 @@ export const ContactWithoutBanner = () => {
   return (
     <section className="container">
       <TitleDescription
-        title="contact us for Any Questions "
-        subtitle="contact "
+        title="Contact us for any Questions "
+        subtitle="Contact "
         des="We’re here to provide the answers you need. Our team ensures clear communication and reliable support to help you achieve your goals with confidence."
       ></TitleDescription>
 
@@ -172,32 +173,13 @@ export const ContactWithoutBanner = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col items-start gap-6  flex-1/2"
         >
-          <h1 className="text-2xl text-dark-gray font-bold mb-2">
+          <h1 className=" text-2xl md:text-3xl text-dark-gray font-bold mb-2">
             contact info :{" "}
           </h1>
 
-          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
-            <Mail className="text-primary contact-icon"></Mail>
-            <p className="font-bold text-lg">techidaCorporation@gmail.com</p>
-          </div>
-          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
-            <Smartphone className="text-primary contact-icon"></Smartphone>
-            <p className="font-bold text-lg">+213 456 6789</p>
-          </div>
-          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
-            <MapPin className="text-primary contact-icon"></MapPin>
-            <p className="font-bold text-lg">
-              A108 Adam Street, New York, NY 535022
-            </p>
-          </div>
-          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
-            <Globe className="text-primary contact-icon"></Globe>
-            <p className="font-bold text-lg">www.techida_corporation.com</p>
-          </div>
-          <div className="flex items-center gap-4 text-dark-gray flex-wrap">
-            <Building2 className="text-primary contact-icon"></Building2>
-            <p className="font-bold text-lg">techida-company</p>
-          </div>
+          {contactInfoData.map((x) => (
+            <ContactItem key={x.id} {...x}></ContactItem>
+          ))}
         </motion.div>
         <MyForm />
       </motion.div>
@@ -206,9 +188,18 @@ export const ContactWithoutBanner = () => {
   );
 };
 
+const ContactItem = ({ icon: Icon, info = "" }: TContactItemProps) => {
+  return (
+    <div className="flex items-center gap-4 text-dark-gray ">
+      <Icon className="text-primary contact-icon"></Icon>
+      <p className="font-bold text-md md:text-lg">{info}</p>
+    </div>
+  );
+};
+
 export function MyMap() {
   const [hovered, setHovered] = useState(false);
-  const [customIcon, setCustomIcon] = useState<any>(null);
+  const [customIcon, setCustomIcon] = useState<Icon | null>(null);
 
   // Custom icon for better visual appearance
   useEffect(() => {

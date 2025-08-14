@@ -24,8 +24,8 @@ const Button = ({
 }: TButtonProps) => {
   const baseClasses = `
     hover:shadow-lg hover:scale-105 shadow-md font-sans tracking-wide border border-primary w-full justify-center max-w-[200px]
-    text-sm md:text-md capitalize font-semibold hover:bg-white hover:text-dark-gray
-    transition-all duration-300 ease-in-out px-2  sm:px-6 py-3 bg-primary text-button-primary rounded-3xl cursor-pointer ${customClass}
+    text-sm md:text-md capitalize font-semibold hover:bg-white hover:text-gray-700
+    transition-all duration-300 ease-in-out px-4  sm:px-6 py-3 bg-primary text-white rounded-3xl cursor-pointer ${customClass}
   `;
 
   if (href) {

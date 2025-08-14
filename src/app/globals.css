@@ -70,7 +70,7 @@ img {
 }
 
 .container {
-  margin: 3rem auto 8rem;
+  margin: 3rem auto 5rem;
 }
 
 .footer {
@@ -82,21 +82,33 @@ img {
 .slick-slide {
   padding: 0 10px;
 }
-/* Make dots larger and green */
-.slick-dots li button:before {
-  font-size: 12px;
-  color: #10b981; /* Tailwind emerald-500 */
-  opacity: 0.6;
+
+/* Custom dot styles */
+.testimonial-slider .slick-dots {
+  bottom: -20px;
+  color: #49af53;
 }
 
-/* Active dot */
-.slick-dots li.slick-active button:before {
-  color: #059669; /* Tailwind emerald-600 */
+.testimonial-slider .slick-dots li {
+  margin: 0 4px;
+}
+
+.testimonial-slider .slick-dots li button:before {
+  font-size: 10px;
+  color: #b9b8b8; /* inactive dot color */
   opacity: 1;
 }
 
-.group-hover\:text-white {
+.testimonial-slider .slick-dots li.slick-active button:before {
+  color: #49af53; /* active dot color (amber-400) */
+}
+/* .group-hover\:text-white {
   transition: color 0.3s ease;
+} */
+
+::selection {
+  background-color: #49af53;
+  color: rgb(255, 255, 255);
 }
 
 .service-icon {
@@ -112,10 +124,33 @@ img {
   width: 30px;
 }
 
+/* For the entire scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* vertical scrollbar width */
+  height: 12px; /* horizontal scrollbar height */
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+/* Scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 @layer base {
   h1,
   h2 {
-    line-height: 8rem;
+    line-height: 2rem;
   }
   p {
     font-size: clamp(0.95rem, 1.9vw + 1rem, 1rem);
@@ -144,6 +179,10 @@ img {
   .service-icon {
     height: 65px;
     width: 65px;
+  }
+
+  .container {
+    margin: 3rem auto 8rem;
   }
 
   .normal-icon {

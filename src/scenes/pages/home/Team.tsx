@@ -37,16 +37,7 @@ const Team = () => {
 
 export default Team;
 
-const TeamItem = ({
-  name,
-  photo,
-  job,
-  id,
-  facebook,
-  Linkedin,
-  youtube,
-  Instagram,
-}: Tteam) => {
+const TeamItem = ({ name, photo, job }: Tteam) => {
   return (
     <motion.article
       variants={staggerItemVariants}

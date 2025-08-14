@@ -1,20 +1,10 @@
 import React from "react";
 
-import {
-  BlogInfoData,
-  categoriesData,
-  recentPostData,
-  tagsData,
-} from "@/lib/contants";
+import { categoriesData, recentPostData, tagsData } from "@/lib/contants";
 
-import {
-  tBlogItemProps,
-  TCateogoriesProps,
-  TRecentPostProps,
-} from "@/lib/types";
+import { TCateogoriesProps, TRecentPostProps } from "@/lib/types";
 
 import Image from "next/image";
-import { Folder, Icon } from "lucide-react";
 
 import { Search } from "lucide-react";
 
@@ -105,7 +95,7 @@ const TagItem = ({ title = "" }) => {
       whileTap={{ scale: 0.95 }}
       className="px-4 py-2 border-2 border-primary text-primary font-semibold rounded-2xl mx-1 my-2
                  transition-all duration-300 ease-in-out
-                 hover:bg-primary hover:text-white hover:scale-105 cursor-pointer  "
+                 hover:bg-primary hover:text-white hover:scale-105 cursor-pointer text-sm lg:text-md  "
     >
       {title}
     </motion.button>

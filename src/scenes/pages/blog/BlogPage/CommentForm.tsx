@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
 
-import Image from "next/image";
-import Link from "next/link";
-
-import { withFormik, FormikProps, FormikErrors } from "formik";
+import { withFormik, FormikProps } from "formik";
 import * as Yup from "yup";
 
 import Input from "@/components/UI/Input";
@@ -21,34 +18,44 @@ interface FormValues {
 
 const CommentForm = () => {
   const InnerForm = (props: FormikProps<FormValues>) => {
-    const { touched, errors, isSubmitting } = props;
+    const { isSubmitting } = props;
 
     return (
       <Form className="">
         {/* username*/}
 
-        <Input type="input" name="name" placeholder="name"></Input>
+        <Input
+          type="input"
+          name="name"
+          placeholder="name"
+          customClass="md:col-span-1"
+        ></Input>
         {/* email*/}
 
-        <Input type="input" name="email" placeholder="email"></Input>
+        <Input
+          type="input"
+          name="email"
+          placeholder="email"
+          customClass="md:col-span-1"
+        ></Input>
         {/* password */}
 
         <Input
           type="input"
           name="website"
           placeholder="URL"
-          customClass="col-span-2"
+          customClass="md:col-span-2"
         ></Input>
         <Input
           type="input"
           inputType="textarea"
           name="comment"
-          customClass="col-span-2"
+          customClass="md:col-span-2"
           placeholder="write your comment..."
           rows={7}
         ></Input>
 
-        <div className="self-center mt-4 col-span-2  ">
+        <div className="self-center mt-4 md:col-span-2  ">
           <Button
             text="Submit comment"
             type="submit"

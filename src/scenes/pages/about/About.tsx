@@ -49,7 +49,7 @@ export const AboutWithoutFaq = () => {
 
 function ServiceComponent() {
   return (
-    <motion.article className="container flex flex-col items-center justify-between gap-12 md:flex-row ">
+    <motion.article className="container flex flex-col  justify-between gap-12 lg:flex-row ">
       <motion.div
         variants={slideFromLeft}
         initial="initial"
@@ -58,16 +58,16 @@ function ServiceComponent() {
         viewport={{ once: true, amount: 0.2 }} // triggers only when in view
       >
         <Image
-          src="/assets/service.png"
+          src="/assets/serviceW.svg"
           alt="Experience"
-          width={500}
-          height={300}
+          width={400}
+          height={400}
           priority
-          className="w-full h-auto  flex-1/2 order-2 lg:order-1"
+          className="w-full h-auto  order-2 lg:order-1"
         ></Image>
       </motion.div>
 
-      <div className="flex-1/2">
+      <div className="flex-1/2  order-1 lg:order-2">
         <TitleDescription
           isTheLastWordHighlighted
           title="Delivering Professional IT Services"
@@ -79,7 +79,7 @@ function ServiceComponent() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] md:grid-cols-2 gap-6"
+          className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] md:grid-cols-2 gap-6  "
         >
           {experienceData.map((item) => (
             <ServiceCardComponent
@@ -107,7 +107,7 @@ const ServiceCardComponent = ({
         whileHover="hover"
         initial="rest"
         animate="rest"
-        className=" group relative overflow-hidden bg-light-gray  flex px-2 py-6 items-center flex-start gap-4 rounded-lg shadow-md w-full max-w-[300px] "
+        className=" group relative overflow-hidden bg-light-gray   flex px-2 py-6 items-center flex-start gap-4 rounded-lg shadow-md w-full max-w-[300px] "
       >
         {/* Animated overlay */}
         <motion.div
@@ -154,7 +154,7 @@ const BestWorks = () => {
         viewport={{ once: true, amount: 0.2 }} // triggers only when in view
       >
         <Image
-          src="/assets/about.png"
+          src="/assets/serviceX.svg"
           alt="Experience"
           width={500}
           height={300}
@@ -170,7 +170,7 @@ const BestWorks = () => {
 
 const Experience = () => {
   return (
-    <section className=" container flex flex-col items-center justify-between gap-12 md:flex-row  ">
+    <section className=" container flex flex-col items-center justify-between gap-12 lg:flex-row   ">
       <div className="flex-1/2">
         <TitleDescription
           isTheLastWordHighlighted
@@ -180,7 +180,7 @@ const Experience = () => {
 
         {/* Experience Bars */}
 
-        <div>
+        <div className="max-w-[800px]">
           {statisticsData.map((x) => (
             <ExperinceBar key={x.id} {...x}></ExperinceBar>
           ))}
@@ -195,7 +195,7 @@ const Experience = () => {
         className="flex-1/2"
       >
         <Image
-          src="/assets/experience.png"
+          src="/assets/serviceY.svg"
           alt="Experience"
           width={500}
           height={300}

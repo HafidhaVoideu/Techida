@@ -33,7 +33,7 @@ const Input = ({
       <ErrorMessage
         name={name}
         component="div"
-        className="text-red-600 font-semibold text-sm
+        className="text-red-600 font-semibold text-sm mt-2
         relative before:content-['*'] before:mr-1 before:text-red-600 before:inline-block
         "
       ></ErrorMessage>

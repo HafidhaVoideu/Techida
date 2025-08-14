@@ -9,7 +9,6 @@ import Statistics from "./Statistics";
 import Team from "./Team";
 import { ContactWithoutBanner } from "../Contact";
 import Testimonials from "./Testimonials";
-import Portfolio from "./Portfolio";
 import Brands from "./Brands";
 
 const Home = () => {

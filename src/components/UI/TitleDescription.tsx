@@ -29,9 +29,9 @@ const TitleDescription = ({
       whileInView="visible"
       animate="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="my-12 capitalize"
+      className="my-12 "
     >
-      <h2 className="text-primary text-sm  lg:text-md 2xl:text-xl font-bold leading-relaxed ">
+      <h2 className="text-primary text-sm  lg:text-md 2xl:text-xl font-bold ">
         {" "}
         {subtitle}
       </h2>

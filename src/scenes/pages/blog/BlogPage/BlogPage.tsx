@@ -2,7 +2,6 @@
 import Banner from "@/components/UI/Banner";
 import FAQ from "@/components/UI/FAQ";
 
-import { tBlogItemProps } from "@/lib/types";
 import React from "react";
 
 import SearchBlog from "./SearchBlog";
@@ -19,7 +18,7 @@ const BlogPage = () => {
         description="As a matter of fact the unification of the coherent software provides a strict control over The Accomplishment of Intended Estimation"
       ></Banner>
 
-      <section className="container flex flex-col md:flex-row gap-12 justify-between">
+      <section className="container flex flex-col lg:flex-row gap-12 justify-between">
         {/* main article */}
 
         <div>
@@ -41,11 +40,11 @@ export default BlogPage;
 
 // ** main section items
 
-const BlogInfoItem = ({ icon: Icon, info, id }: tBlogItemProps) => {
-  return (
-    <div className="flex items-center gap-3 ">
-      <Icon size={22} className="text-primary"></Icon>
-      <span>{info}</span>
-    </div>
-  );
-};
+// const BlogInfoItem = ({ icon: Icon, info }: tBlogItemProps) => {
+//   return (
+//     <div className="flex items-center gap-3 ">
+//       <Icon size={22} className="text-primary"></Icon>
+//       <span>{info}</span>
+//     </div>
+//   );
+// };

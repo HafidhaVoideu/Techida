@@ -1,12 +1,7 @@
 import { statsData } from "@/lib/contants";
 import React, { useRef } from "react";
 
-import {
-  KeyframeOptions,
-  animate,
-  useInView,
-  useIsomorphicLayoutEffect,
-} from "framer-motion";
+import { animate, useInView, useIsomorphicLayoutEffect } from "framer-motion";
 
 const Statistics = () => {
   return (

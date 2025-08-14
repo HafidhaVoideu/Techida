@@ -4,16 +4,15 @@ import { menu_items } from "@/lib/contants";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/UI/Button";
-import { Sun, Moon, MenuIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useTheme } from "next-themes";
 import {
   menuVariants,
   staggerMenuVariants,
   mobileMenuContainer,
   mobileMenuItem,
 } from "@/lib/variants";
-import { TMenuLinksProps } from "@/lib/types";
+import { TMenuLinksProps, TmobileMenuProps } from "@/lib/types";
 
 import dynamic from "next/dynamic";
 // ** TOGGLE BUTTON
@@ -94,7 +93,7 @@ const MobileMenu = ({
   menu_items,
   activeLink,
   setActiveLink,
-}: any) => (
+}: TmobileMenuProps) => (
   <AnimatePresence mode="popLayout">
     {isMenuOpen && (
       <motion.div
@@ -104,7 +103,7 @@ const MobileMenu = ({
         exit="exit"
         layout
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="bg-gradient-to-b from-background via-background/90 to-background/80 lg:hidden absolute top-16 left-0 w-full shadow-lg z-20 py-6"
+        className="bg-gradient-to-b from-background via-background/90 to-background/80 lg:hidden absolute top-17 left-0 w-full shadow-lg z-20 py-6"
       >
         <MenuLinks
           items={menu_items}
@@ -126,7 +125,6 @@ const MobileMenu = ({
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
-  const { theme } = useTheme();
   const [scrollPoistion, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -139,9 +137,7 @@ const Header = () => {
     <header
       className={`${
         scrollPoistion > 100
-          ? theme == "dark"
-            ? " bg-gradient-to-b from-background via-background/90 to-background/80  "
-            : "shadow-md bg-white/60 backdrop-blur-md "
+          ? " bg-gradient-to-b from-background via-background/90 to-background/70   "
           : ""
       }z-50 sticky top-0 `}
     >

@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { withFormik, FormikProps, FormikErrors } from "formik";
+import { withFormik, FormikProps } from "formik";
 import * as Yup from "yup";
 
 import Input from "@/components/UI/Input";
@@ -13,7 +13,7 @@ import Button from "@/components/UI/Button";
 import Form from "@/components/UI/Form";
 
 import { motion } from "motion/react";
-import { slideFromLeft, slideFromRight } from "@/lib/variants";
+import { slideFromLeft } from "@/lib/variants";
 
 interface FormValues {
   email: string;
@@ -98,6 +98,7 @@ const Login = () => {
           variants={slideFromLeft}
           initial="initial"
           whileInView="animate"
+          animate="animate"
           viewport={{ once: true, amount: 0.2 }}
           className="flex-1/2 order-2 md:order-1"
         >

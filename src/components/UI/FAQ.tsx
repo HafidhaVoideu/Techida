@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TitleDescription from "./TitleDescription";
 import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { TFaq, Tquestion } from "@/lib/types";
 import { faqData } from "@/lib/contants";
-import { AnimatePresence, easeIn, easeInOut, motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { slideFromLeft } from "@/lib/variants";
 
 const FAQ = () => {
@@ -22,7 +22,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="container mt-32">
+    <section className="container ">
       <TitleDescription
         subtitle="FAQ "
         title="Frequently Asked Questions"
@@ -31,7 +31,7 @@ const FAQ = () => {
 
       {/* main content */}
 
-      <div className=" flex flex-col items-center justify-between gap-12 md:flex-row min-h-[600px]">
+      <div className=" flex flex-col items-center justify-between gap-12 lg:flex-row min-h-[600px]">
         <motion.div
           variants={slideFromLeft}
           initial="initial"
@@ -40,7 +40,7 @@ const FAQ = () => {
           viewport={{ once: true, amount: 0.2 }} // triggers only when in view
         >
           <Image
-            src="/assets/contact us.png"
+            src="/assets/aboutY.svg"
             alt="Experience"
             width={500}
             height={300}
@@ -49,7 +49,7 @@ const FAQ = () => {
         </motion.div>
         {/* faq section */}
 
-        <div className="flex-1/2 ">
+        <div className="flex-1/2  max-w-[800px] ">
           {faqData.map((faq) => (
             <FaqItem
               key={faq.id}
@@ -83,7 +83,7 @@ const FaqItem = ({
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
       >
-        <h2 className="text-md lg:text-lg font-semibold text-dark-gray">
+        <h2 className="text-md lg:text-lg font-semibold text-dark-gray ">
           {question}
         </h2>
         <motion.div
