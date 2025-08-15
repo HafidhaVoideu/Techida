@@ -54,11 +54,11 @@ const StatisticsItem = ({ from = 0, title = "", stat: to = 90 }) => {
     <div className="capitalize text-center">
       <h2
         ref={ref}
-        className=" text-2xl :mdtext-4xl md:text-5xl text-primary font-bold mb-4"
+        className=" text-3xl md:text-5xl text-primary font-bold mb-4"
       >
         {to}
       </h2>
-      <h1 className=" text-md md:text-xl lg:text-2xl font-bold text-white">
+      <h1 className=" text-lg md:text-xl lg:text-2xl font-bold text-white">
         {title}
       </h1>
     </div>
