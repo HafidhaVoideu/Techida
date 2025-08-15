@@ -100,12 +100,12 @@ const BlogItem = ({ id = 1 }) => {
       <div className="flex flex-col gap-4 p-6">
         <div className="flex justify-between items-center ">
           <div className="flex justify-between items-center gap-2">
-            <Calendar className="text-primary"></Calendar>
+            <Calendar size={20} className="text-primary"></Calendar>
 
             <span className="text-xm md:text-sm font-semibold">22/12/2025</span>
           </div>
           <div className="flex justify-between items-center gap-2">
-            <Tag size={10} className="text-primary "></Tag>
+            <Tag size={20} className="text-primary "></Tag>
 
             <span className="font-semibold text-xm md:text-sm ">web</span>
           </div>
