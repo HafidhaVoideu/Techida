@@ -123,7 +123,7 @@ const CategoryItem = ({ title, count }: TCateogoriesProps) => {
 const SearchTitle = ({ title = "" }) => {
   return (
     <motion.h1
-      className="font-bold text-xl capitalize mb-4 max-w-[fit-content]"
+      className="font-bold text-lg: md:text-xl capitalize mb-4 max-w-[fit-content]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
