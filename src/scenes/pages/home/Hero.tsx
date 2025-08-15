@@ -56,7 +56,11 @@ const Hero = () => {
             long-term success.
           </p>
 
-          <Button href="/login" text="Join now"></Button>
+          <Button
+            href="/login"
+            text="Join now"
+            customClass="self-center"
+          ></Button>
         </motion.div>
 
         {/* image  container */}
