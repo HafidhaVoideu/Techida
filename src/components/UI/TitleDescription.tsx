@@ -31,7 +31,7 @@ const TitleDescription = ({
       viewport={{ once: true, amount: 0.3 }}
       className="my-12 "
     >
-      <h2 className="text-primary text-sm  lg:text-md 2xl:text-xl font-bold ">
+      <h2 className="text-primary text-md  lg:text-lg 2xl:text-xl font-bold ">
         {" "}
         {subtitle}
       </h2>

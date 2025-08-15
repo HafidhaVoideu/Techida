@@ -53,7 +53,7 @@ const TeamItem = ({ name, photo, job }: Tteam) => {
       ></Image>
 
       <div className="p-6 flex flex-col gap-0 items-center">
-        <h2 className="text-2xl font-bold text-dark-gray">{name}</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-dark-gray">{name}</h2>
 
         <h3 className="text-md font-semibold text-dark-gray">{job}</h3>
 
