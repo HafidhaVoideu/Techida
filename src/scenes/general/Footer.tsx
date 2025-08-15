@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer className="bg-stable-gray ">
       <div className="footer py-8 px-2">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-8  lg:place-items-center">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-8  lg:place-items-center">
           {/* logo */}
           <div className="text-white capitalize">
             <Image
@@ -24,12 +24,12 @@ const Footer = () => {
               className=" mb-4 width-[90px] height-[9px] md:width-[140px] height-[140px]  "
             />
 
-            <p className=" text-md">
+            <p className=" text-sm md:text-md">
               Lorem ipsum dolor sit amet aspernatur exercitationem fugiat.
             </p>
 
             <div className="mt-4">
-              <h3 className="font-semibold text-lg mb-4 ">follow us</h3>
+              <h3 className="font-bold text-sm md:text-md mb-4 ">follow us</h3>
 
               <div className="flex gap-2 items-center justify-center md:justify-start">
                 {ICONS.map((x) => (
@@ -64,11 +64,11 @@ export default Footer;
 const ListItem = ({ id, elements, list }: TFooterList) => {
   return (
     <ul key={id} className="text-white capitalize  ">
-      <li className=" text-md font-bold mb-4 min-w-[180px]  ">{list}</li>
+      <li className=" text-sm md:text-md font-bold mb-4   ">{list}</li>
       {elements.map((e) => (
         <li
           key={e.id}
-          className=" flex ml-2 mb-4 min-w-[180px] hover:text-primary cursor-pointer transition-all duration-300 ease-in-out "
+          className=" text-sm md:text-md flex ml-2 mb-4  hover:text-primary cursor-pointer transition-all duration-300 ease-in-out "
         >
           {" "}
           <ChevronRight fontSize={22}></ChevronRight>
