@@ -10,8 +10,8 @@ const Choose = () => {
   return (
     <section className="container">
       <TitleDescription
-        title="why our clients choose us "
-        subtitle="why choose us "
+        title="Why our clients choose us "
+        subtitle="Why choose us "
         des="As a matter of fact the unification of the coherent software provides a strict control over The Accomplishment of Intended Estimation "
       ></TitleDescription>
 
@@ -42,7 +42,7 @@ const ChooseItem = ({ title, desc, id }: TChoose) => {
       variants={staggerItemVariants}
       className=" bg-light-gray rounded-2xl p-7 "
     >
-      <h2 className=" text-4xl md:text-5xl font-bold text-primary ">0{id}.</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-primary ">0{id}.</h2>
 
       <h1 className="text-dark-gray text-2xl my-4 font-bold">{title}</h1>
       <p className="text-dark-gray">{desc}</p>

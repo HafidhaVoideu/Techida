@@ -26,8 +26,8 @@ const Portfolio = () => {
       />
       <section className="container">
         <TitleDescription
-          subtitle="portfolio "
-          title="our portfolio"
+          subtitle="Portfolio "
+          title="Our portfolio"
         ></TitleDescription>
 
         {/* filter */}
