@@ -50,7 +50,7 @@ const Header = () => {
     <header
       className={`${
         scrollPoistion > 1
-          ? " bg-gradient-to-b from-background via-background/90 to-background/70   "
+          ? " bg-gradient-to-b from-background via-background/90 to-background/70 backdrop-blur-md  "
           : ""
       }z-50 sticky top-0 `}
     >

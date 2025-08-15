@@ -27,7 +27,7 @@ export const MobileMenu = forwardRef<HTMLDivElement, TmobileMenuProps>(
           ref={ref}
           layout
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="bg-gradient-to-b from-background/70 via-background/70 to-background lg:hidden absolute top-[99.5%] left-0 w-full shadow-lg z-20 py-6"
+          className="bg-gradient-to-b from-background/70 via-background/90 to-background lg:hidden absolute top-[100%] left-0 w-full shadow-lg z-20 py-6 backdrop-blur-md "
         >
           <MenuLinks
             items={menu_items}
@@ -36,7 +36,7 @@ export const MobileMenu = forwardRef<HTMLDivElement, TmobileMenuProps>(
             setIsMenuOpen={setIsMenuOpen}
             variants={mobileMenuItem}
             isMobile
-            className="flex-col items-center"
+            className="flex-col items-center text-lg font-bood"
           />
           <div className="flex flex-col items-center gap-4 mt-4">
             <ToggleButton />

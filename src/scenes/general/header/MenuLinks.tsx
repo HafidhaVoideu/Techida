@@ -34,7 +34,7 @@ export const MenuLinks = ({
           }}
         >
           <Link
-            className={`px-4 py-2 rounded-md transition-colors font-semibold duration-200  text-sm xl:text-md ${
+            className={`px-4 py-2 rounded-md transition-colors font-semibold duration-200  text-sm xl:text-md   ${
               activeLink === item.label
                 ? "bg-primary  text-white "
                 : "text-dark-gray "

@@ -34,15 +34,9 @@ const CommentItem = ({
     <article>
       <div className="flex items-center gap-4 mb-4 text-dark-gray">
         <div
-          className={`${customClass}  relative max-w-[50px] max-h-[50px] w-full h-full aspect-square`}
+          className={`${customClass}  relative max-w-[50px] max-h-[50px] w-full aspect-square`}
         >
-          <Image
-            src={image}
-            alt={name}
-            fill
-            className="rounded-full"
-            objectFit="cover"
-          ></Image>
+          <Image src={image} alt={name} fill className="rounded-full"></Image>
         </div>
         {/* INFORMATION */}
         <div>
