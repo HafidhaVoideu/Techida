@@ -2,7 +2,6 @@
 import React from "react";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import { withFormik, FormikProps } from "formik";
 import * as Yup from "yup";
@@ -14,6 +13,7 @@ import Form from "@/components/UI/Form";
 
 import { motion } from "motion/react";
 import { slideFromLeft } from "@/lib/variants";
+import CustomLink from "@/components/UI/CustomLink";
 
 interface FormValues {
   email: string;
@@ -114,23 +114,19 @@ const Login = () => {
       <div className="flex-1/2 order-1 md:order-2  text-dark-gray  ">
         <h1 className=" text-3xl sm:text-4xl md:text-5xl font-bold">Login</h1>
 
-        <p className="my-4 text-md">
-          you dont have an account ?
-          <Link href="/signup" className="text-primary font-[600]">
-            {" "}
-            register now
-          </Link>
-        </p>
+        <CustomLink
+          title="you don’t have an account?"
+          subtitle="register now"
+          href="/signup"
+        ></CustomLink>
 
         <MyForm></MyForm>
 
-        <p className="mt-8 text-md">
-          forgot password?
-          <Link href="/" className="text-primary font-[600]">
-            {" "}
-            reset password
-          </Link>
-        </p>
+        <CustomLink
+          title="forgot password?"
+          subtitle="reset password"
+          href="/"
+        ></CustomLink>
       </div>
     </section>
   );

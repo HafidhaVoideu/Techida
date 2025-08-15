@@ -15,7 +15,7 @@ const SkeletonCard = () => {
       {/* Content */}
       <div className="flex flex-col gap-4 p-6">
         <div className="flex justify-between items-center">
-          <div className="w-1/3">
+          <div className="w-1/4">
             {" "}
             {/* Responsive width */}
             <Skeleton className="!leading-none" />

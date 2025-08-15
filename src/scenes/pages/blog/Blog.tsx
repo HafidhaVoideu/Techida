@@ -47,7 +47,7 @@ const Blog = () => {
           variants={staggerContainerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))]  lg:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-content-center place-items-center gap-8"
+          className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] lg:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] place-content-center place-items-center gap-8"
         >
           {loading
             ? Array(blogItems)
