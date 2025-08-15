@@ -32,11 +32,11 @@ const Portfolio = () => {
 
         {/* filter */}
 
-        <ul className="flex items-center gap-6 mb-12">
+        <ul className="flex items-center gap-6 mb-8">
           {filtersData.map((f) => (
             <li
               key={f.id}
-              className={`relative font-bold text-lg capitalize cursor-pointer transition-colors duration-300
+              className={`relative font-bold text-md capitalize cursor-pointer transition-colors duration-300
         ${activeTab === f.label ? "text-primary" : "text-dark-gray"}
         after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:rounded-full after:transition-all after:duration-300
         ${

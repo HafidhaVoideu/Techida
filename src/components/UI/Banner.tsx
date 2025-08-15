@@ -30,7 +30,7 @@ const Banner = ({ path, title, description }: TBanner) => {
 
   return (
     <motion.div
-      className="bg-stable-gray  w-full text-white py-8 mb-8 capitalize overflow-hidden"
+      className="bg-stable-gray  w-full text-white py-8  capitalize overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -42,12 +42,15 @@ const Banner = ({ path, title, description }: TBanner) => {
         viewport={{ once: true, amount: 0.3 }}
         className="container-banner"
       >
-        <motion.p className="uppercase text-gray-300" variants={itemVariants}>
+        <motion.p
+          className="uppercase text-sm lg:text-md text-gray-300"
+          variants={itemVariants}
+        >
           {path}
         </motion.p>
 
         <motion.h1
-          className="text-3xl md:text-5xl lg:text-6xl font-bold my-6 "
+          className="text-3xl md:text-5xl lg:text-6xl font-bold my-5 "
           variants={itemVariants}
         >
           {title}

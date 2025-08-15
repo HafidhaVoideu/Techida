@@ -42,9 +42,13 @@ const ChooseItem = ({ title, desc, id }: TChoose) => {
       variants={staggerItemVariants}
       className=" bg-light-gray rounded-2xl p-7 "
     >
-      <h2 className="text-4xl md:text-5xl font-bold text-primary ">0{id}.</h2>
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary ">
+        0{id}.
+      </h2>
 
-      <h1 className="text-dark-gray text-2xl my-4 font-bold">{title}</h1>
+      <h1 className="text-dark-gray text-xl md:text-2xl my-4 font-bold">
+        {title}
+      </h1>
       <p className="text-dark-gray">{desc}</p>
     </motion.article>
   );

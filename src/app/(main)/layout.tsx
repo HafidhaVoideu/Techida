@@ -1,5 +1,5 @@
 import Footer from "@/scenes/general/Footer";
-import Header from "@/scenes/general/Header";
+import Header from "@/scenes/general/header/Header";
 
 export default function PageLayout({
   children,

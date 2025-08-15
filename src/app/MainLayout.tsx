@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 
-import Header from "@/scenes/general/Header";
+import Header from "@/scenes/general/header/Header";
 import Footer from "@/scenes/general/Footer";
 
 type MainLayoutProps = {

@@ -29,14 +29,14 @@ const TitleDescription = ({
       whileInView="visible"
       animate="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="my-12 "
+      className="mb-12 "
     >
-      <h2 className="text-primary text-md  lg:text-lg 2xl:text-xl font-bold ">
+      <h2 className="text-primary text-sm  md:text-md 2xl:text-xl font-bold ">
         {" "}
         {subtitle}
       </h2>
       {styledTitle}
-      <p className="text-dark-gray">{des}</p>
+      <p className="text-dark-gray ">{des}</p>
     </motion.div>
   );
 };
