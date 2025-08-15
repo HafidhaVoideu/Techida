@@ -113,7 +113,7 @@ const CategoryItem = ({ title, count }: TCateogoriesProps) => {
       }}
       className="py-2 px-1 cursor-pointer "
     >
-      <p className="text-md hover:text-primary">
+      <p className="text-sm md:text-md hover:text-primary">
         {title} <span className="text-gray-400 mr-3 "> ({count})</span>
       </p>
     </motion.div>
