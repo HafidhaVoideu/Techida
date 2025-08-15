@@ -7,12 +7,13 @@ import Image from "next/image";
 import { ICONS } from "@/lib/contants";
 import { TFooterList } from "@/lib/types";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-stable-gray ">
       <div className="footer py-8 px-2">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-8  place-items-center">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-8  lg:place-items-center">
           {/* logo */}
           <div className="text-white capitalize">
             <Image
@@ -28,14 +29,14 @@ const Footer = () => {
             </p>
 
             <div className="mt-4">
-              <h3 className="font-semibold text-lg mb-4">follow us</h3>
+              <h3 className="font-semibold text-lg mb-4 ">follow us</h3>
 
               <div className="flex gap-2 items-center justify-center md:justify-start">
                 {ICONS.map((x) => (
                   <Link
                     href={x.href}
                     key={x.id}
-                    className="bg-primary p-2 rounded-full text-sm"
+                    className="bg-primary p-2 rounded-full "
                   >
                     {x.icon}
                   </Link>
@@ -62,14 +63,15 @@ export default Footer;
 
 const ListItem = ({ id, elements, list }: TFooterList) => {
   return (
-    <ul key={id} className="text-white capitalize text-center lg:text-left">
+    <ul key={id} className="text-white capitalize  ">
       <li className=" text-md font-bold mb-4 min-w-[180px]  ">{list}</li>
       {elements.map((e) => (
         <li
           key={e.id}
-          className="ml-2 mb-4 min-w-[180px] hover:text-primary cursor-pointer transition-all duration-300 ease-in-out "
+          className=" flex ml-2 mb-4 min-w-[180px] hover:text-primary cursor-pointer transition-all duration-300 ease-in-out "
         >
           {" "}
+          <ChevronRight fontSize={22}></ChevronRight>
           <Link href={e.href || "#"}>{e.label}</Link>
         </li>
       ))}

@@ -92,7 +92,7 @@ export const menu_items = [
 export const ICONS = [
   {
     id: 1,
-    icon: <Linkedin />,
+    icon: <Linkedin className="normal-icon" />,
     href: "https://www.linkedin.com",
   },
   {

@@ -37,8 +37,8 @@ const Blog = () => {
       />
       <section className="container">
         <TitleDescription
-          subtitle="blog"
-          title="our blog"
+          subtitle="Blog"
+          title="Our blog"
           des="As a matter of fact the unification of the coherent software provides a strict control over The Accomplishment of Intended Estimation"
         ></TitleDescription>
         {/* blogs */}

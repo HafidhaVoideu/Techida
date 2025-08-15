@@ -56,7 +56,7 @@ const Portfolio = () => {
           variants={staggerContainerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  md:grid-cols-3  gap-6 auto-rows-[400px]"
+          className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  md:grid-cols-3  gap-6 auto-rows-[150px] md:auto-rows-[250px] xl:auto-rows-[350px] overflow-hidden"
         >
           <AnimatePresence mode="popLayout">
             {filterdData.map((p) => (
@@ -95,15 +95,19 @@ const PortfolioItem = ({
       ></Image>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-100 xl:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {/* Project name */}
-        <h3 className="text-white text-lg font-semibold mb-2">{projectName}</h3>
+        <h3 className="text-white text-xs md:text-sm text-center lg:text-lg font-semibold mb-2">
+          {projectName}
+        </h3>
 
         {/* Project type */}
-        <p className="text-gray-300 text-sm mb-3">{projectType}</p>
+        <p className="text-gray-300 text-xs font-semibold lg:text-sm mb-3  ">
+          {projectType}
+        </p>
 
         {/* Technologies list */}
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className=" flex-wrap justify-center gap-2 hidden xl:flex">
           {technologies.map((tech, index) => (
             <span
               key={index}
