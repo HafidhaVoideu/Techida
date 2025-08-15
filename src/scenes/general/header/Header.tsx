@@ -4,12 +4,14 @@ import { menu_items } from "@/lib/contants";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/UI/Button";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, X } from "lucide-react";
 import { menuVariants } from "@/lib/variants";
 
 import dynamic from "next/dynamic";
 import { MenuLinks } from "./MenuLinks";
 import { MobileMenu } from "./MobileMenu";
+
+import { motion } from "motion/react";
 // ** TOGGLE BUTTON
 
 const ToggleButton = dynamic(
@@ -93,11 +95,26 @@ const Header = () => {
             <ToggleButton />
           </div>
 
-          <MenuIcon
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="block lg:hidden cursor-pointer"
-            size={28}
-          />
+          {!isMenuOpen ? (
+            <motion.div
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              key="menu"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <MenuIcon size={28} className="text-dark-gray" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="moon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="block lg:hidden cursor-pointer"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <X size={28} className="text-dark-gray" />
+            </motion.div>
+          )}
         </div>
       </div>
     </header>
