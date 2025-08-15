@@ -97,6 +97,7 @@ const Header = () => {
 
           {!isMenuOpen ? (
             <motion.div
+              className="block lg:hidden cursor-pointer"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               key="menu"
               initial={{ opacity: 0, scale: 0.5 }}
@@ -106,9 +107,9 @@ const Header = () => {
             </motion.div>
           ) : (
             <motion.div
-              key="moon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              key="close"
               className="block lg:hidden cursor-pointer"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
             >
