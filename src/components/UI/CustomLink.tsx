@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 const CustomLink = ({ title = "", subtitle = "", href = "" }) => {
   return (
-    <p className="mt-8 text-md">
+    <p className="my-4 text-md">
       {title}
       <Link
         href={href}
