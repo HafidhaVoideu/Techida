@@ -178,15 +178,16 @@ export const experienceData = [
 
     icon: Earth,
   },
-  {
-    id: 2,
-    title: "Support 24/24",
-    icon: Headset,
-  },
+
   {
     id: 3,
     title: "Easy to reach",
     icon: Gamepad2,
+  },
+  {
+    id: 2,
+    title: "Support 24/24",
+    icon: Headset,
   },
   {
     id: 4,

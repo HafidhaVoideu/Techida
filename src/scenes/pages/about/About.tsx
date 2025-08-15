@@ -107,7 +107,7 @@ const ServiceCardComponent = ({
         whileHover="hover"
         initial="rest"
         animate="rest"
-        className=" group relative overflow-hidden bg-light-gray  flex px-2 py-6 items-center justify-center md:justify-start gap-3 rounded-lg shadow-md w-full max-w-[300px] "
+        className=" group relative overflow-hidden bg-light-gray  flex px-2 py-6 items-center justify-center md:justify-start gap-3 rounded-lg shadow-md w-full h-full max-w-[250px] "
       >
         {/* Animated overlay */}
         <motion.div
@@ -211,9 +211,11 @@ const ExperinceBar = ({ title, percentage }: TExperienceBar) => {
   return (
     <div className="mb-6">
       <div className="flex justify-between">
-        <h2 className="text-md lg: text-lg font-semibold mb-2">{title}</h2>
+        <h2 className=" text-sm md:text-md lg:text-lg font-semibold mb-2">
+          {title}
+        </h2>
 
-        <h2 className="text-md lg: text-lg font-semibold mb-2">
+        <h2 className="text-sm md:text-md lg:text-lg font-semibold mb-2">
           {percentage}%
         </h2>
       </div>

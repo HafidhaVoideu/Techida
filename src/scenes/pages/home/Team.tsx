@@ -25,7 +25,7 @@ const Team = () => {
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"
-        className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] place-items-center gap-6"
+        className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] place-items-center gap-6"
       >
         {teamData.map((t) => (
           <TeamItem key={t.id} {...t}></TeamItem>
