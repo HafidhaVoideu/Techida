@@ -6,15 +6,16 @@ export default function Brands() {
   return (
     <Marquee
       className="bg-brands-gray"
-      pauseOnHover={true}
+      pauseOnHover={false}
       speed={80}
+      delay={-2}
       gradient={false}
     >
       {brandsData.map((x) => (
         <div
           key={x.id}
           style={{ width: 130, height: 130 }}
-          className="mx-8 flex items-center justify-center overflow-hidden"
+          className="mx-12 flex items-center justify-center overflow-hidden"
         >
           <Image
             src={x.logo}

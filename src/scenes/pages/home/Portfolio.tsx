@@ -58,7 +58,7 @@ const Portfolio = () => {
           animate="visible"
           className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  md:grid-cols-3  gap-6 auto-rows-[150px] md:auto-rows-[250px] xl:auto-rows-[350px] overflow-hidden"
         >
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence mode="popLayou">
             {filterdData.map((p) => (
               <PortfolioItem key={`${p.id}-${p.projectName}`} {...p} />
             ))}

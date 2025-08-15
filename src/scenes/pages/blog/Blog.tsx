@@ -102,7 +102,7 @@ const BlogItem = ({ id = 1 }) => {
           <div className="flex justify-between items-center gap-2">
             <Calendar className="text-primary"></Calendar>
 
-            <span className="font-semibold">22/12/2025</span>
+            <span className="text-xm md:text-sm font-semibold">22/12/2025</span>
           </div>
           <div className="flex justify-between items-center gap-2">
             <Tag className="text-primary"></Tag>
