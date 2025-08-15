@@ -105,12 +105,12 @@ const BlogItem = ({ id = 1 }) => {
             <span className="text-xm md:text-sm font-semibold">22/12/2025</span>
           </div>
           <div className="flex justify-between items-center gap-2">
-            <Tag className="text-primary"></Tag>
+            <Tag size={10} className="text-primary "></Tag>
 
-            <span className="font-semibold">web</span>
+            <span className="font-semibold text-xm md:text-sm ">web</span>
           </div>
         </div>
-        <h2 className="text-dark-gray font-bold text-xl leading-snug line-clamp-2">
+        <h2 className="text-dark-gray font-bold text-lg md:text-xl leading-snug line-clamp-2">
           How to Learn JavaScript Easily With This Method
         </h2>
 

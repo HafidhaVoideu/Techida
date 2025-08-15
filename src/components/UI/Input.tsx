@@ -17,7 +17,7 @@ const Input = ({
 }: Tinputprops) => {
   return (
     <div className={`w-full flex-col flex gap-1    ${customClass} `}>
-      <label className=" font-semibold capitalize mb-2">
+      <label className=" text-sm md:text-md font-semibold capitalize mb-2">
         {label ? label : name}
       </label>
       <Field

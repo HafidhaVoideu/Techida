@@ -33,8 +33,16 @@ const CommentItem = ({
   return (
     <article>
       <div className="flex items-center gap-4 mb-4 text-dark-gray">
-        <div className={`${customClass}  relative w-[50px] h-[50px]`}>
-          <Image src={image} alt={name} fill className=" rounded-full"></Image>
+        <div
+          className={`${customClass}  relative max-w-[50px] max-h-[50px] w-full h-full aspect-square`}
+        >
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="rounded-full"
+            objectFit="cover"
+          ></Image>
         </div>
         {/* INFORMATION */}
         <div>
@@ -44,7 +52,7 @@ const CommentItem = ({
 
             <div className="text-primary">
               <button>
-                <BsReplyFill />
+                <BsReplyFill size={16} />
               </button>
 
               <span className="inline-block ml-2 font-semibold text-sm">
@@ -54,7 +62,7 @@ const CommentItem = ({
           </div>
 
           <p className="text-primary text-xs font-semibold">{date}</p>
-          <p>{comment}</p>
+          <p className="text-sm md:text-md mt-2">{comment}</p>
         </div>
       </div>
 
