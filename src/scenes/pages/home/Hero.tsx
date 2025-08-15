@@ -11,11 +11,10 @@ import { ICONS } from "@/lib/contants";
 import { motion } from "motion/react";
 
 import { slideFromLeft, slideFromRight } from "@/lib/variants";
+import ParticlesComponent from "@/components/UI/Particles";
 const Hero = () => {
   return (
     <section className=" container">
-      {/* <ParticlesComponent id="hero-particles" /> */}
-
       <div className=" flex flex-col items-start md:items-center justify-center gap-4 text-center  md:flex-row ">
         {/* info container */}
         <motion.div

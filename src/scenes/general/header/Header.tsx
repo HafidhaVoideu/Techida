@@ -47,7 +47,7 @@ const Header = () => {
   return (
     <header
       className={`${
-        scrollPoistion > 100
+        scrollPoistion > 1
           ? " bg-gradient-to-b from-background via-background/90 to-background/70   "
           : ""
       }z-50 sticky top-0 `}
@@ -64,7 +64,7 @@ const Header = () => {
 
         <Link href="/">
           <Image
-            src="/logo.png"
+            src="/assets/logo.png"
             alt="Logo"
             width={120}
             height={120}

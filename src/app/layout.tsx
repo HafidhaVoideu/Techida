@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
 import { SkeletonTheme } from "react-loading-skeleton";
+import ParticlesComponent from "@/components/UI/Particles";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -27,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable}  antialiased`}>
+        <ParticlesComponent id="hero-particles" />
+
         <SkeletonTheme baseColor="#bbc1bb" highlightColor="#bac8be">
           <ThemeProvider
             attribute="data-theme"
-            defaultTheme="light"
+            defaultTheme="dark"
             enableSystem={false}
             storageKey="theme"
           >

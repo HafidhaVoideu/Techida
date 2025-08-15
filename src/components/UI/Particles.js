@@ -1,3 +1,4 @@
+"use client";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
@@ -30,18 +31,18 @@ const ParticlesComponent = (props) => {
     () => ({
       background: {
         color: {
-          value: "transparent",
+          value: "dark-gray",
         },
       },
       fpsLimit: 120,
       interactivity: {
         events: {
           onClick: {
-            enable: true,
+            enable: false,
             mode: "repulse",
           },
           onHover: {
-            enable: true,
+            enable: false,
             mode: "grab",
           },
         },
@@ -61,7 +62,7 @@ const ParticlesComponent = (props) => {
         },
         links: {
           color: "#FFFFFF",
-          distance: 150,
+          distance: 50,
           enable: true,
           opacity: 0.3,
           width: 1,
@@ -80,10 +81,10 @@ const ParticlesComponent = (props) => {
           density: {
             enable: true,
           },
-          value: 180,
+          value: 70,
         },
         opacity: {
-          value: 1.0,
+          value: 0.5,
         },
         shape: {
           type: "circle",

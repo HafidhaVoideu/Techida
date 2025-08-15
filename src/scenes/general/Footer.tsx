@@ -16,7 +16,7 @@ const Footer = () => {
           {/* logo */}
           <div className="text-white capitalize">
             <Image
-              src="/logo.png"
+              src="/assets/logo.png"
               alt="Logo"
               width={120}
               height={120}
@@ -51,7 +51,7 @@ const Footer = () => {
           <ListItem {...socials}></ListItem>
         </div>
         <p className="text-light-gray mt-6">
-          ©2025 Created by: <span className="text-light-gray"> </span> erramix
+          ©2025 Created by: <span className="text-light-gray"> </span> Hafidha
         </p>
       </div>
     </footer>
